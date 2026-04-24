@@ -104,6 +104,19 @@
     letter-spacing: 0.01em;
     line-height: 1.6;
   }
+  .hero-avail {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--subtle);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 4px 12px;
+    transition: all 0.25s ease;
+    cursor: default;
+  }
+  .hero-avail:hover { border-color: var(--accent); color: var(--accent); background: var(--bg2); }
 
   /* SECTION */
   section { margin-bottom: 64px; }
@@ -124,18 +137,26 @@
     border-radius: 4px;
     padding: 16px 18px;
     transition: all 0.25s ease;
-    cursor: default;
+    cursor: pointer;
   }
-  .skill-group:hover {
-    background: var(--bg3);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
+  .skill-group:hover { background: var(--bg3); border-color: var(--accent); transform: translateY(-2px); }
   .skill-group:hover .skill-group-title { color: var(--white); }
   .skill-group:hover p { color: var(--text); font-size: 13.5px; }
+  .skill-header { display: flex; justify-content: space-between; align-items: center; }
+  .skill-plus {
+    font-size: 16px; color: var(--subtle); transition: transform 0.25s, color 0.25s;
+    line-height: 1; user-select: none;
+  }
+  .skill-group.open .skill-plus { transform: rotate(45deg); color: var(--accent); }
+  .skill-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, margin 0.25s;
+    margin-top: 0;
+  }
+  .skill-group.open .skill-body { max-height: 200px; margin-top: 10px; }
   .skill-group-title {
     font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 10px; transition: color 0.25s;
+    color: var(--accent); margin-bottom: 0; transition: color 0.25s;
   }
   .skill-group p { font-size: 12.5px; color: var(--muted); line-height: 1.9; transition: all 0.25s; }
 
@@ -270,11 +291,11 @@
   <span class="nav-name">Abdallah Aneed</span>
   <div class="nav-right">
     <button class="btn-lang" onclick="toggleLang()">EN / DE</button>
-    <a class="btn-cv" href="/Abdallah_Aneed_CV.pdf" download>
+    <a class="btn-cv" href="Abdallah_Aneed_CV.pdf" download>
       <span class="de">CV</span>
       <span class="en" style="display:none">CV</span>
     </a>
-    <a class="btn-cv" href="/Abdallah_Aneed_Portfolio.pdf" download style="border-color: var(--muted); color: var(--muted);">
+    <a class="btn-cv" href="Abdallah_Aneed_Portfolio.pdf" download style="border-color: var(--muted); color: var(--muted);">
       <span class="de">Portfolio</span>
       <span class="en" style="display:none">Portfolio</span>
     </a>
@@ -289,6 +310,8 @@
     <h1 class="hero-name">Abdallah <em>Aneed</em></h1>
     <p class="hero-sub de">Business & IT Student · Offen für Trainee- und Junior-Stellen in IT, Produktmanagement & Prozessberatung</p>
     <p class="hero-sub en" style="display:none">Business & IT Student · Open to trainee and junior roles in IT, product management & process consulting</p>
+    <p class="hero-avail de">Verfügbar ab Juli 2026</p>
+    <p class="hero-avail en" style="display:none">Available from July 2026</p>
   </div>
 
   <!-- SKILLS -->
@@ -297,20 +320,47 @@
       <span class="de">Kenntnisse</span><span class="en" style="display:none">Skills</span>
     </p>
     <div class="skills-grid">
-      <div class="skill-group">
-        <p class="skill-group-title"><span class="de">Analyse & Prozesse</span><span class="en" style="display:none">Analysis & Processes</span></p>
-        <p>Jira · Confluence<br>Excel · Testmanagement<br>Bug-Tracking · Dokumentation</p>
+      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <p class="skill-group-title"><span class="de">Analyse & Prozesse</span><span class="en" style="display:none">Analysis & Processes</span></p>
+          <span class="skill-plus">+</span>
+        </div>
+        <div class="skill-body">
+          <p>Jira · Confluence<br>Excel · Testmanagement<br>Bug-Tracking · Dokumentation</p>
+        </div>
       </div>
-      <div class="skill-group">
-        <p class="skill-group-title"><span class="de">Design & Entwicklung</span><span class="en" style="display:none">Design & Development</span></p>
-        <p>Figma · Java · SwiftUI<br>HTML / CSS · JavaScript</p>
+      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <p class="skill-group-title"><span class="de">Design & Entwicklung</span><span class="en" style="display:none">Design & Development</span></p>
+          <span class="skill-plus">+</span>
+        </div>
+        <div class="skill-body">
+          <p>Figma · Java · SwiftUI<br>HTML / CSS · JavaScript</p>
+        </div>
       </div>
-      <div class="skill-group">
-        <p class="skill-group-title"><span class="de">Kommunikation</span><span class="en" style="display:none">Communication</span></p>
-        <p>PowerPoint · Microsoft Forms<br>
-        <span class="de">Deutsch C1 · Englisch fließend<br>Arabisch Muttersprache</span>
-        <span class="en" style="display:none">German C1 · English fluent<br>Arabic native</span>
-        </p>
+      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <p class="skill-group-title"><span class="de">Kommunikation</span><span class="en" style="display:none">Communication</span></p>
+          <span class="skill-plus">+</span>
+        </div>
+        <div class="skill-body">
+          <p>PowerPoint · Microsoft Forms<br>
+          <span class="de">Deutsch C1 · Englisch fließend<br>Arabisch Muttersprache</span>
+          <span class="en" style="display:none">German C1 · English fluent<br>Arabic native</span>
+          </p>
+        </div>
+      </div>
+      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <p class="skill-group-title"><span class="de">CRM & Salesforce</span><span class="en" style="display:none">CRM & Salesforce</span></p>
+          <span class="skill-plus">+</span>
+        </div>
+        <div class="skill-body">
+          <p>Salesforce CRM<br>Sales Cloud · Service Cloud<br>
+          <span class="de">Flows & Automatisierung<br>Berichte & Dashboards</span>
+          <span class="en" style="display:none">Flows & Automation<br>Reports & Dashboards</span>
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -410,9 +460,9 @@
     <p class="section-label">
       <span class="de">Projekte</span><span class="en" style="display:none">Projects</span>
     </p>
-    <div class="project-card" style="opacity:0.5; padding: 28px 24px;">
-      <p class="project-card-desc de" style="font-size:13px; color: var(--muted);">Coming soon — stell mich ein und wir fangen an.</p>
-      <p class="project-card-desc en" style="display:none; font-size:13px; color: var(--muted);">Coming soon — hire me and we'll get started.</p>
+    <div class="project-card" style="opacity:0.75; padding: 28px 24px; border-color: var(--border2);">
+      <p class="project-card-desc de" style="font-size:13px; color: var(--text);">Coming soon — stell mich ein und wir fangen an.</p>
+      <p class="project-card-desc en" style="display:none; font-size:13px; color: var(--text);">Coming soon — hire me and we'll get started.</p>
     </div>
   </section>
 
@@ -512,8 +562,11 @@
     document.querySelectorAll('.en').forEach(el => {
       el.style.display = lang === 'en' ? '' : 'none';
     });
-
     document.documentElement.lang = lang;
+  }
+
+  function toggleSkill(group) {
+    group.classList.toggle('open');
   }
 
   function toggleCard(card) {
