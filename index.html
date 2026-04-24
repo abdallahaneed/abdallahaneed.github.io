@@ -565,7 +565,9 @@
   }
 
   function toggleSkill(group) {
-    group.classList.toggle('open');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.skill-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
   }
 
   function toggleCard(card) {
