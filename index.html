@@ -512,8 +512,7 @@
     document.querySelectorAll('.en').forEach(el => {
       el.style.display = lang === 'en' ? '' : 'none';
     });
-    document.querySelector('.hero-bio-de').classList.toggle('active', lang === 'de');
-    document.querySelector('.hero-bio-en').classList.toggle('active', lang === 'en');
+
     document.documentElement.lang = lang;
   }
 
