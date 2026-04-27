@@ -218,29 +218,76 @@
   .edu-card:hover .exp-meta { color: var(--text); }
 
   /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
-  .project-card {
+  .projects-grid { display: flex; flex-direction: column; gap: 14px; }
+
+  /* REAL PROJECT CARD */
+  .project-card-real {
     background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 20px;
-    position: relative;
-    opacity: 0.5;
+    padding: 22px 24px;
+    text-decoration: none;
+    display: block;
     transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .project-card:hover { opacity: 0.85; border-color: var(--accent); background: var(--bg3); transform: translateY(-2px); }
-  .project-card-label {
-    font-size: 10px; letter-spacing: 0.15em; color: var(--subtle);
-    text-transform: uppercase; margin-bottom: 10px;
+  .project-card-real::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0; transition: opacity 0.25s;
   }
-  .project-card-title { font-size: 13px; color: var(--white); margin-bottom: 6px; }
-  .project-card-desc { font-size: 12px; color: var(--muted); }
-  .coming-soon-badge {
-    position: absolute; top: 14px; right: 14px;
-    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
-    background: var(--bg3); border: 1px solid var(--border2);
-    color: var(--subtle); padding: 3px 8px; border-radius: 2px;
+  .project-card-real:hover { border-color: var(--accent); background: var(--bg3); transform: translateY(-2px); }
+  .project-card-real:hover::before { opacity: 1; }
+  .project-card-real:hover .project-arrow { color: var(--accent); transform: translateX(4px); }
+  .project-card-real:hover .project-card-title { color: var(--white); }
+
+  .project-card-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px; margin-bottom: 10px;
   }
+  .project-card-left { flex: 1; }
+  .project-card-type {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--subtle); margin-bottom: 6px;
+  }
+  .project-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 300;
+    color: var(--text); line-height: 1.2;
+    transition: color 0.25s;
+  }
+  .project-card-title em { font-style: italic; color: var(--accent); }
+  .project-arrow {
+    font-size: 18px; color: var(--subtle);
+    flex-shrink: 0; margin-top: 4px;
+    transition: color 0.25s, transform 0.25s;
+  }
+  .project-card-desc {
+    font-size: 12px; color: var(--muted);
+    line-height: 1.8; margin-bottom: 16px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-tag {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--border2); color: var(--subtle);
+    padding: 3px 9px; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .project-card-real:hover .project-tag { border-color: var(--border); color: var(--muted); }
+
+  /* COMING SOON CARD */
+  .project-card-soon {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    opacity: 0.45;
+    transition: opacity 0.2s;
+  }
+  .project-card-soon:hover { opacity: 0.65; }
+  .project-card-soon p { font-size: 12.5px; color: var(--muted); }
 
   /* CONTACT */
   .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
@@ -378,7 +425,6 @@
       <span class="de">Erfahrung</span><span class="en" style="display:none">Experience</span>
     </p>
 
-    <!-- Card 1 -->
     <div class="exp-card" onclick="toggleCard(this)">
       <div class="exp-header">
         <div class="exp-header-left">
@@ -411,7 +457,6 @@
       </div>
     </div>
 
-    <!-- Card 2 -->
     <div class="exp-card" onclick="toggleCard(this)">
       <div class="exp-header">
         <div class="exp-header-left">
@@ -436,7 +481,6 @@
       </div>
     </div>
 
-    <!-- Card 3 -->
     <div class="exp-card" onclick="toggleCard(this)">
       <div class="exp-header">
         <div class="exp-header-left">
@@ -467,9 +511,45 @@
     <p class="section-label">
       <span class="de">Projekte</span><span class="en" style="display:none">Projects</span>
     </p>
-    <div class="project-card" style="opacity:0.75; padding: 28px 24px; border-color: var(--border2);">
-      <p class="project-card-desc de" style="font-size:13px; color: var(--text);">Coming soon — stell mich ein und wir fangen an.</p>
-      <p class="project-card-desc en" style="display:none; font-size:13px; color: var(--text);">Coming soon — hire me and we'll get started.</p>
+    <div class="projects-grid">
+
+      <!-- REAL PROJECT CARD -->
+      <a class="project-card-real" href="salesforce-crm.html">
+        <div class="project-card-header">
+          <div class="project-card-left">
+            <p class="project-card-type">
+              <span class="de">CRM · Automatisierung · Reporting</span>
+              <span class="en" style="display:none">CRM · Automation · Reporting</span>
+            </p>
+            <h2 class="project-card-title">
+              Salesforce <em>CRM</em> —
+              <span class="de">M&A Konfiguration</span>
+              <span class="en" style="display:none">M&A Configuration</span>
+            </h2>
+          </div>
+          <span class="project-arrow">→</span>
+        </div>
+        <p class="project-card-desc de">
+          Vollständige Salesforce-Konfiguration für ein M&A-Beratungsunternehmen: 8 Custom Opportunity Stages, Record-Triggered Flow Automation, Live Sales Dashboard und Sicherheitskonzept.
+        </p>
+        <p class="project-card-desc en" style="display:none">
+          Full Salesforce configuration for an M&A advisory firm: 8 custom opportunity stages, record-triggered flow automation, live sales dashboard, and security architecture.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Salesforce</span>
+          <span class="project-tag">Flow Automation</span>
+          <span class="project-tag">Sales Cloud</span>
+          <span class="project-tag">Reporting</span>
+          <span class="project-tag">CRM</span>
+        </div>
+      </a>
+
+      <!-- COMING SOON -->
+      <div class="project-card-soon">
+        <p class="de">Weitere Projekte folgen.</p>
+        <p class="en" style="display:none">More projects coming soon.</p>
+      </div>
+
     </div>
   </section>
 
@@ -527,7 +607,6 @@
       </a>
     </div>
 
-    <!-- FORM — replace YOUR_FORM_ID with your Formspree form ID -->
     <form class="contact-form" action="https://formspree.io/f/mbdqwdjw" method="POST">
       <div class="form-row">
         <div class="form-field">
