@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT PM Portfolio – Thesis Case Study · Abdallah Aneed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --border: #2a2a2a;
+    --border2: #333;
+    --text: #e8e8e8;
+    --muted: #888;
+    --subtle: #555;
+    --accent: #c8b89a;
+    --accent2: #4a90d9;
+    --white: #f0f0f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(15,15,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 max(24px, 5vw);
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name {
+    font-family: 'Fraunces', serif;
+    font-size: 17px; font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-name:hover { color: var(--accent); }
+  .btn-lang {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; background: var(--bg3);
+    border: 1px solid var(--border2); color: var(--muted);
+    padding: 6px 14px; cursor: pointer; border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .btn-lang:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em;
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--muted); padding: 6px 14px;
+    cursor: pointer; border-radius: 3px;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .nav-back:hover { border-color: var(--accent); color: var(--accent); }
+
+  main { max-width: 760px; margin: 0 auto; padding: 100px max(24px,5vw) 80px; }
+
+  .project-header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+  .project-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--subtle); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .project-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .project-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--white); margin-bottom: 14px;
+  }
+  .project-title em { font-style: italic; color: var(--accent); }
+  .project-meta {
+    font-size: 11px; color: var(--subtle);
+    letter-spacing: 0.05em; margin-bottom: 20px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--border2); color: var(--muted);
+    padding: 4px 10px; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .tag:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  .section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--subtle); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .context-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 20px 22px;
+    font-size: 12.5px; color: var(--muted);
+    line-height: 1.9;
+  }
+  .context-box p + p { margin-top: 10px; }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+  .stat-box:hover { border-color: var(--accent); }
+  .stat-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subtle); margin-bottom: 6px; }
+  .stat-value { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: var(--accent); }
+  .stat-sub { font-size: 10px; color: var(--subtle); margin-top: 2px; }
+
+  /* DELIVERABLES */
+  .deliverables { display: flex; flex-direction: column; gap: 10px; }
+  .deliverable {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: start;
+    transition: all 0.25s;
+  }
+  .deliverable:hover { border-color: var(--accent); background: var(--bg3); }
+  .deliverable-num {
+    font-family: 'Fraunces', serif;
+    font-size: 20px; font-weight: 300; font-style: italic;
+    color: var(--accent); line-height: 1.2;
+    padding-top: 1px;
+  }
+  .deliverable-title { font-size: 12.5px; color: var(--white); margin-bottom: 4px; font-weight: 500; }
+  .deliverable-desc { font-size: 12px; color: var(--muted); line-height: 1.8; }
+
+  /* TOOL ARTIFACTS */
+  .artifact-grid { display: flex; flex-direction: column; gap: 24px; }
+  .artifact-block {}
+  .artifact-caption {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--subtle); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .artifact-caption::before {
+    content: ''; display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+  .artifact-wrap {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg2);
+    transition: border-color 0.25s;
+  }
+  .artifact-wrap:hover { border-color: var(--accent2); }
+  .artifact-note {
+    font-size: 11px; color: var(--subtle);
+    margin-top: 8px; padding-left: 16px;
+    border-left: 1px solid var(--border);
+    line-height: 1.7;
+  }
+
+  /* JIRA BOARD EMBED */
+  .jira-embed {
+    padding: 16px;
+    font-family: 'DM Mono', monospace;
+  }
+  .jira-embed-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .jira-logo {
+    width: 16px; height: 16px; background: #185FA5;
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .jira-project-name { font-size: 11px; color: var(--text); font-weight: 500; }
+  .jira-project-key { font-size: 10px; color: var(--subtle); margin-left: 4px; }
+  .jira-tabs-bar { display: flex; gap: 0; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .jira-tab { font-size: 10px; padding: 5px 12px; color: var(--subtle); border-bottom: 2px solid transparent; }
+  .jira-tab.active { color: #4a90d9; border-bottom: 2px solid #4a90d9; }
+  .jira-backlog-label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .jira-badge { background: var(--bg3); color: var(--subtle); border-radius: 20px; padding: 1px 6px; font-size: 9px; }
+  .jira-backlog-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 10px; }
+  .jira-backlog-table th { color: var(--subtle); padding: 4px 8px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 400; font-size: 9px; }
+  .jira-backlog-table td { padding: 5px 8px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+  .jira-backlog-table tr:last-child td { border-bottom: none; }
+  .epic-chip { font-size: 9px; padding: 1px 6px; border-radius: 2px; white-space: nowrap; display: inline-block; }
+  .board-cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .board-col-head { font-size: 9px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--subtle); padding-bottom: 6px; border-bottom: 2px solid var(--border); margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .board-col-head.todo { border-color: #378ADD; }
+  .board-col-head.inprog { border-color: #EF9F27; }
+  .board-col-head.done { border-color: #639922; }
+  .board-col-head.inreview { border-color: #7F77DD; }
+  .jira-card { background: var(--bg3); border: 1px solid var(--border2); border-radius: 3px; padding: 7px 8px; margin-bottom: 5px; }
+  .jira-card-title { font-size: 10px; color: var(--text); font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
+  .jira-card-title.done { text-decoration: line-through; color: var(--subtle); }
+  .jira-card-meta { display: flex; justify-content: space-between; align-items: center; }
+  .jira-card-date { font-size: 9px; color: var(--subtle); }
+  .pri-h { color: #A32D2D; font-size: 9px; }
+  .pri-m { color: #888; font-size: 9px; }
+  .pri-hh { color: #BA7517; font-size: 9px; }
+
+  /* CONFLUENCE EMBED */
+  .conf-embed { display: flex; height: 320px; font-family: 'DM Mono', monospace; }
+  .conf-sidebar { width: 160px; min-width: 160px; background: var(--bg3); border-right: 1px solid var(--border); padding: 10px 0; }
+  .conf-sidebar-title { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); padding: 0 10px 8px; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+  .conf-nav-item { font-size: 10px; color: var(--subtle); padding: 5px 10px; cursor: pointer; border-left: 2px solid transparent; display: flex; align-items: center; gap: 5px; }
+  .conf-nav-item.active { color: #4a90d9; border-left-color: #4a90d9; background: var(--bg2); }
+  .conf-nav-section { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--border2); padding: 8px 10px 3px; }
+  .conf-main { flex: 1; overflow-y: auto; padding: 14px 16px; background: var(--bg2); }
+  .conf-breadcrumb { font-size: 9px; color: var(--subtle); margin-bottom: 8px; }
+  .conf-page-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: var(--white); margin-bottom: 3px; }
+  .conf-page-meta { font-size: 9px; color: var(--subtle); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .conf-section-h { font-size: 10px; font-weight: 500; color: var(--text); margin: 12px 0 6px; letter-spacing: 0.05em; }
+  .conf-body { font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .conf-table { width: 100%; border-collapse: collapse; font-size: 10px; margin: 6px 0; }
+  .conf-table th { background: var(--bg3); padding: 4px 8px; text-align: left; border: 1px solid var(--border); color: var(--subtle); font-weight: 400; font-size: 9px; }
+  .conf-table td { padding: 4px 8px; border: 1px solid var(--border); color: var(--muted); }
+  .conf-info { background: #0d1f33; border-left: 2px solid #4a90d9; padding: 6px 10px; font-size: 10px; color: #4a90d9; border-radius: 0 3px 3px 0; margin: 6px 0; }
+  .conf-badge { display: inline-block; font-size: 9px; padding: 1px 6px; border-radius: 2px; }
+  .conf-page { display: none; }
+  .conf-page.active { display: block; }
+
+  /* GANTT */
+  .gantt-wrap { padding: 16px; font-family: 'DM Mono', monospace; }
+  .gantt-title { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-bottom: 12px; }
+  .gantt-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .gantt-label { font-size: 10px; color: var(--muted); width: 150px; min-width: 150px; }
+  .gantt-track { flex: 1; height: 24px; background: var(--bg3); border-radius: 3px; position: relative; overflow: hidden; }
+  .gantt-bar {
+    height: 100%; border-radius: 3px; position: absolute;
+    display: flex; align-items: center; padding: 0 8px;
+    font-size: 9px; letter-spacing: 0.05em; white-space: nowrap; overflow: hidden;
+  }
+  .gantt-date { font-size: 9px; color: var(--subtle); width: 50px; min-width: 50px; text-align: right; }
+  .gantt-months { display: flex; margin-bottom: 4px; padding-left: 160px; }
+  .gantt-month { flex: 1; font-size: 9px; color: var(--subtle); text-align: center; letter-spacing: 0.05em; text-transform: uppercase; }
+  .gantt-milestone { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .gantt-milestone-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .gantt-milestone-text { font-size: 10px; color: var(--subtle); }
+
+  /* FINDINGS */
+  .findings-list { display: flex; flex-direction: column; gap: 10px; }
+  .finding-item {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 14px 18px;
+    font-size: 12px; color: var(--muted); line-height: 1.8;
+    display: flex; gap: 12px; align-items: flex-start;
+    transition: all 0.2s;
+  }
+  .finding-item:hover { border-color: var(--border2); color: var(--text); }
+  .finding-num {
+    font-family: 'Fraunces', serif; font-size: 16px;
+    font-weight: 300; font-style: italic; color: var(--accent);
+    flex-shrink: 0; line-height: 1.3;
+  }
+
+  /* REFLECTION */
+  .reflection-grid { display: flex; flex-direction: column; gap: 10px; }
+  .reflection-item {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 14px 18px;
+    font-size: 12.5px; color: var(--muted);
+    display: flex; gap: 12px; align-items: flex-start;
+    transition: all 0.2s;
+  }
+  .reflection-item:hover { border-color: var(--border2); color: var(--text); }
+  .reflection-icon { color: var(--accent); flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+
+  /* LINKS ROW */
+  .links-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .ext-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 3px; padding: 8px 16px;
+    font-size: 11px; color: var(--muted); text-decoration: none;
+    transition: all 0.2s; letter-spacing: 0.05em;
+  }
+  .ext-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px max(24px,5vw);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+  footer p { font-size: 11px; color: var(--subtle); }
+
+  @media (max-width: 600px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .board-cols { grid-template-columns: repeat(2, 1fr); }
+    .conf-embed { flex-direction: column; height: auto; }
+    .conf-sidebar { width: 100%; min-width: 100%; display: flex; flex-wrap: wrap; gap: 0; border-right: none; border-bottom: 1px solid var(--border); }
+    .conf-main { height: 320px; overflow-y: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="index.html">Abdallah Aneed</a>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button class="btn-lang" onclick="toggleLang()">EN / DE</button>
+    <a class="nav-back" href="index.html">← <span class="de">Zurück</span><span class="en" style="display:none">Back</span></a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HEADER -->
+  <div class="project-header">
+    <p class="project-label">
+      <span class="de">Case Study · IT Projektmanagement</span>
+      <span class="en" style="display:none">Case Study · IT Project Management</span>
+    </p>
+    <h1 class="project-title">
+      <span class="de">Die Rolle von <em>KI & Automatisierung</em><br>im IT-Projektmanagement</span>
+      <span class="en" style="display:none">The Role of <em>AI & Automation</em><br>in IT Project Management</span>
+    </h1>
+    <p class="project-meta">
+      <span class="de">IU Internationale Hochschule · Bachelor Thesis · April – Mai 2026 · Betreuer: Dr. Muhammad Ashfaq</span>
+      <span class="en" style="display:none">IU International University · Bachelor Thesis · April – May 2026 · Supervisor: Dr. Muhammad Ashfaq</span>
+    </p>
+    <div class="tag-row">
+      <span class="tag">Jira</span>
+      <span class="tag">Confluence</span>
+      <span class="tag">Agile PM</span>
+      <span class="tag">PRISMA</span>
+      <span class="tag">Systematic Literature Review</span>
+      <span class="tag">AI in PM</span>
+      <span class="tag">Risk Management</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Projektkennzahlen</span>
+      <span class="en" style="display:none">Project Stats</span>
+    </p>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label"><span class="de">Laufzeit</span><span class="en" style="display:none">Duration</span></div>
+        <div class="stat-value">31</div>
+        <div class="stat-sub"><span class="de">Tage</span><span class="en" style="display:none">Days</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label"><span class="de">Quellen</span><span class="en" style="display:none">Sources</span></div>
+        <div class="stat-value">38</div>
+        <div class="stat-sub"><span class="de">Peer-reviewed</span><span class="en" style="display:none">Peer-reviewed</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label"><span class="de">Gescreent</span><span class="en" style="display:none">Screened</span></div>
+        <div class="stat-value">742K</div>
+        <div class="stat-sub"><span class="de">Datensätze</span><span class="en" style="display:none">Records</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Status</div>
+        <div class="stat-value" style="font-size:13px; margin-top:4px; color: #EF9F27;">In Progress</div>
+        <div class="stat-sub">06.05.2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEXT -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Kontext</span><span class="en" style="display:none">Context</span>
+    </p>
+    <div class="context-box">
+      <p class="de">
+        Nur ca. 35 % der Projekte weltweit werden erfolgreich abgeschlossen — bei einem jährlichen Projektvolumen von 48 Billionen USD. Organisationen setzen noch immer auf Excel-Tabellen und Präsentationssoftware, die seit 30 Jahren kaum weiterentwickelt wurden. Durch mein Praktikum bei Telekom Mobility Solutions habe ich selbst erlebt, wie viel Zeit Projektmanager mit manuellen Koordinationsaufgaben in Jira und Confluence verlieren.
+      </p>
+      <p class="en" style="display:none">
+        Only ~35% of projects worldwide are completed successfully — across an annual project volume of $48 trillion. Organizations still rely on spreadsheets and presentation tools unchanged for 30 years. During my internship at Telekom Mobility Solutions, I witnessed firsthand how much time project managers lose to manual coordination tasks in Jira and Confluence.
+      </p>
+      <p class="de">
+        Ziel: Durch eine systematische Literaturrecherche (PRISMA) den aktuellen Stand der Forschung zu KI und Automatisierung im IT-Projektmanagement zu synthetisieren — und zu zeigen, wo KI echten Mehrwert schafft und wo menschliches Urteilsvermögen unverzichtbar bleibt.
+      </p>
+      <p class="en" style="display:none">
+        Goal: Through a systematic literature review (PRISMA), synthesize the current state of research on AI and automation in IT project management — and identify where AI creates real value and where human judgment remains irreplaceable.
+      </p>
+    </div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Was ich geliefert habe</span>
+      <span class="en" style="display:none">What I delivered</span>
+    </p>
+    <div class="deliverables">
+      <div class="deliverable">
+        <span class="deliverable-num">1</span>
+        <div>
+          <p class="deliverable-title"><span class="de">Jira Projektboard — Kanban mit 5 Epics, 22 Tasks</span><span class="en" style="display:none">Jira Project Board — Kanban with 5 Epics, 22 Tasks</span></p>
+          <p class="deliverable-desc de">Vollständiges Agile Board mit realen Statusphasen, Prioritäten und Fälligkeitsdaten. Epics: Project Initiation, Literature Review, Analysis & Synthesis, Writing & Drafting, Review & Submission.</p>
+          <p class="deliverable-desc en" style="display:none">Full Agile board with real status phases, priorities, and due dates. Epics: Project Initiation, Literature Review, Analysis & Synthesis, Writing & Drafting, Review & Submission.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-num">2</span>
+        <div>
+          <p class="deliverable-title"><span class="de">Confluence Wiki — 7 Projektseiten</span><span class="en" style="display:none">Confluence Wiki — 7 Project Pages</span></p>
+          <p class="deliverable-desc de">Strukturiertes Projektwiki mit Project Charter, Stakeholder Register, Risk Register, Research Log (15 Quellen dokumentiert), Meeting Notes und Lessons Learned.</p>
+          <p class="deliverable-desc en" style="display:none">Structured project wiki including Project Charter, Stakeholder Register, Risk Register, Research Log (15 sources documented), Meeting Notes, and Lessons Learned.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-num">3</span>
+        <div>
+          <p class="deliverable-title">PRISMA Systematic Literature Review</p>
+          <p class="deliverable-desc de">742.873 Datensätze identifiziert → 277 Volltexte evaluiert → 38 finale Studien eingeschlossen. Thematische Analyse entlang 4 Bereichen: Planung & Scheduling, Risikomanagement, Generative KI & Kommunikation, Agile-KI-Integration.</p>
+          <p class="deliverable-desc en" style="display:none">742,873 records identified → 277 full texts evaluated → 38 final studies included. Thematic analysis across 4 areas: Planning & Scheduling, Risk Management, Generative AI & Communication, Agile-AI Integration.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-num">4</span>
+        <div>
+          <p class="deliverable-title"><span class="de">Projektmanagement-Portfolio-Dokumentation</span><span class="en" style="display:none">Project Management Portfolio Documentation</span></p>
+          <p class="deliverable-desc de">Diese Thesis wurde gleichzeitig als PM-Portfolioprojekt geführt — mit Projektcharter, Stakeholder-Management, Risikoregister und Gantt-Timeline — um echte PM-Kompetenz nachzuweisen.</p>
+          <p class="deliverable-desc en" style="display:none">This thesis was simultaneously managed as a PM portfolio project — including project charter, stakeholder management, risk register, and Gantt timeline — to demonstrate real PM competency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JIRA BOARD -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Jira — Kanban Board</span>
+      <span class="en" style="display:none">Jira — Kanban Board</span>
+    </p>
+    <div class="artifact-block">
+      <p class="artifact-caption">
+        <span class="de">01 — Thesis Projektboard · Kanban · 22 Tasks · 5 Epics</span>
+        <span class="en" style="display:none">01 — Thesis Project Board · Kanban · 22 Tasks · 5 Epics</span>
+      </p>
+      <div class="artifact-wrap">
+        <div class="jira-embed">
+          <div class="jira-embed-header">
+            <div class="jira-logo">
+              <svg width="8" height="8" viewBox="0 0 10 10"><path d="M5 0L9.5 5 5 10 0.5 5Z" fill="white"/></svg>
+            </div>
+            <span class="jira-project-name">Thesis — Automation Tools in Enterprise Testing</span>
+            <span class="jira-project-key">KAN</span>
+          </div>
+          <div class="jira-tabs-bar">
+            <div class="jira-tab">Summary</div>
+            <div class="jira-tab">List</div>
+            <div class="jira-tab active">Board</div>
+            <div class="jira-tab">Backlog</div>
+            <div class="jira-tab">Timeline</div>
+          </div>
+          <!-- Backlog -->
+          <div class="jira-backlog-label">Backlog <span class="jira-badge">7</span></div>
+          <table class="jira-backlog-table">
+            <thead><tr><th>Task</th><th>Epic</th><th>Priority</th><th>Due</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Create risk register</td><td><span class="epic-chip" style="background:#0d1f33;color:#4a90d9;">Project Initiation</span></td><td><span class="pri-h">▲ Highest</span></td><td style="color:var(--subtle)">Apr 28</td><td><span class="epic-chip" style="background:#0d1f33;color:#4a90d9;">To do</span></td></tr>
+              <tr><td>Write methodology chapter</td><td><span class="epic-chip" style="background:#1a1a2e;color:#9b8ec4;">Writing & Drafting</span></td><td><span class="pri-h">▲ Highest</span></td><td style="color:var(--subtle)">Apr 28</td><td><span class="epic-chip" style="background:#0d1f33;color:#4a90d9;">To do</span></td></tr>
+              <tr><td>Write analysis chapter</td><td><span class="epic-chip" style="background:#1a1a2e;color:#9b8ec4;">Writing & Drafting</span></td><td><span class="pri-h">▲ Highest</span></td><td style="color:var(--subtle)">May 1</td><td><span class="epic-chip" style="background:#0d1f33;color:#4a90d9;">To do</span></td></tr>
+              <tr><td>Supervisor review round one</td><td><span class="epic-chip" style="background:#2a0d0d;color:#c47a6a;">Review & Submission</span></td><td><span class="pri-h">▲ Highest</span></td><td style="color:var(--subtle)">May 2</td><td><span class="epic-chip" style="background:#0d1f33;color:#4a90d9;">To do</span></td></tr>
+              <tr><td>Submit thesis</td><td><span class="epic-chip" style="background:#2a0d0d;color:#c47a6a;">Review & Submission</span></td><td><span class="pri-h">▲ Highest</span></td><td style="color:var(--subtle)">May 6</td><td><span class="epic-chip" style="background:#0d1f33;color:#4a90d9;">To do</span></td></tr>
+            </tbody>
+          </table>
+          <!-- Board Columns -->
+          <div class="jira-backlog-label" style="margin-top:10px;">Board <span class="jira-badge">22</span></div>
+          <div class="board-cols">
+            <div>
+              <div class="board-col-head"><span>Idea</span><span class="jira-badge">0</span></div>
+              <p style="font-size:9px;color:var(--subtle);text-align:center;margin-top:8px;">Empty</p>
+            </div>
+            <div>
+              <div class="board-col-head todo"><span>To do</span><span class="jira-badge">15</span></div>
+              <div class="jira-card"><p class="jira-card-title">Create risk register</p><p class="epic-chip" style="background:#0d1f33;color:#4a90d9;font-size:8px;">Project Initiation</p><div class="jira-card-meta"><span class="jira-card-date">Apr 28</span><span class="pri-h">▲</span></div></div>
+              <div class="jira-card"><p class="jira-card-title">Build analysis framework</p><p class="epic-chip" style="background:#1a1500;color:#c8a84b;font-size:8px;">Analysis & Synthesis</p><div class="jira-card-meta"><span class="jira-card-date">Apr 28</span><span class="pri-hh">⬆</span></div></div>
+              <div class="jira-card"><p class="jira-card-title">Write introduction</p><p class="epic-chip" style="background:#1a1a2e;color:#9b8ec4;font-size:8px;">Writing & Drafting</p><div class="jira-card-meta"><span class="jira-card-date">Apr 27</span><span class="pri-hh">⬆</span></div></div>
+              <div class="jira-card"><p class="jira-card-title">Write methodology chapter</p><p class="epic-chip" style="background:#1a1a2e;color:#9b8ec4;font-size:8px;">Writing & Drafting</p><div class="jira-card-meta"><span class="jira-card-date">Apr 28</span><span class="pri-h">▲</span></div></div>
+              <div class="jira-card"><p class="jira-card-title">Submit thesis</p><p class="epic-chip" style="background:#2a0d0d;color:#c47a6a;font-size:8px;">Review & Submission</p><div class="jira-card-meta"><span class="jira-card-date">May 6</span><span class="pri-h">▲</span></div></div>
+            </div>
+            <div>
+              <div class="board-col-head inprog"><span>In progress</span><span class="jira-badge">3</span></div>
+              <div class="jira-card"><p class="jira-card-title">Write project charter</p><p class="epic-chip" style="background:#0d1f33;color:#4a90d9;font-size:8px;">Project Initiation</p><div class="jira-card-meta"><span class="jira-card-date">Apr 27</span><span class="pri-h">▲</span></div></div>
+              <div class="jira-card"><p class="jira-card-title">Evaluate source quality</p><p class="epic-chip" style="background:#0d2a1a;color:#5aaa7a;font-size:8px;">Literature Review</p><div class="jira-card-meta"><span class="jira-card-date">Apr 28</span><span class="pri-hh">⬆</span></div></div>
+              <div class="jira-card"><p class="jira-card-title">Document findings in Confluence</p><p class="epic-chip" style="background:#0d2a1a;color:#5aaa7a;font-size:8px;">Literature Review</p><div class="jira-card-meta"><span class="jira-card-date">Apr 30</span><span class="pri-m">= Med</span></div></div>
+            </div>
+            <div>
+              <div class="board-col-head inreview"><span>In review</span><span class="jira-badge">0</span></div>
+              <p style="font-size:9px;color:var(--subtle);text-align:center;margin-top:8px;">Empty</p>
+            </div>
+            <div>
+              <div class="board-col-head done"><span>Done</span><span class="jira-badge">4</span></div>
+              <div class="jira-card" style="opacity:0.5;"><p class="jira-card-title done">Define research question</p><p class="epic-chip" style="background:#0d1f33;color:#4a90d9;font-size:8px;">Project Initiation</p><div class="jira-card-meta"><span class="jira-card-date">Apr 6</span></div></div>
+              <div class="jira-card" style="opacity:0.5;"><p class="jira-card-title done">Identify stakeholders</p><p class="epic-chip" style="background:#0d1f33;color:#4a90d9;font-size:8px;">Project Initiation</p><div class="jira-card-meta"><span class="jira-card-date">Apr 7</span></div></div>
+              <div class="jira-card" style="opacity:0.5;"><p class="jira-card-title done">Set up Confluence workspace</p><p class="epic-chip" style="background:#0d1f33;color:#4a90d9;font-size:8px;">Project Initiation</p><div class="jira-card-meta"><span class="jira-card-date">Apr 24</span></div></div>
+              <div class="jira-card" style="opacity:0.5;"><p class="jira-card-title done">Identify primary sources</p><p class="epic-chip" style="background:#0d2a1a;color:#5aaa7a;font-size:8px;">Literature Review</p><div class="jira-card-meta"><span class="jira-card-date">Apr 10</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="artifact-note de">Kanban Board mit 5 Epics und 22 Tasks — aktiv gemanagt in Atlassian Jira über die gesamte Projektlaufzeit. Prioritäten, Fälligkeitsdaten und Statusübergänge spiegeln den realen Forschungsprozess wider.</p>
+      <p class="artifact-note en" style="display:none">Kanban board with 5 Epics and 22 Tasks — actively managed in Atlassian Jira throughout the project lifecycle. Priorities, due dates and status transitions reflect the real research process.</p>
+    </div>
+  </div>
+
+  <!-- CONFLUENCE -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Confluence — Projektwiki</span>
+      <span class="en" style="display:none">Confluence — Project Wiki</span>
+    </p>
+    <div class="artifact-block">
+      <p class="artifact-caption">
+        <span class="de">02 — PM Portfolio Wiki · 7 Seiten · Thesis & SAP Projekt</span>
+        <span class="en" style="display:none">02 — PM Portfolio Wiki · 7 Pages · Thesis & SAP Project</span>
+      </p>
+      <div class="artifact-wrap">
+        <div class="conf-embed">
+          <div class="conf-sidebar">
+            <div class="conf-sidebar-title">PM Portfolio</div>
+            <div class="conf-nav-section">Thesis</div>
+            <div class="conf-nav-item active" onclick="showConfPage('home',this)">🏠 Project Home</div>
+            <div class="conf-nav-item" onclick="showConfPage('charter',this)">📋 Charter</div>
+            <div class="conf-nav-item" onclick="showConfPage('risk',this)">⚠️ Risk Register</div>
+            <div class="conf-nav-item" onclick="showConfPage('research',this)">🔬 Research Log</div>
+            <div class="conf-nav-item" onclick="showConfPage('lessons',this)">💡 Lessons Learned</div>
+            <div class="conf-nav-section">SAP</div>
+            <div class="conf-nav-item" onclick="showConfPage('sap',this)">🏗️ SAP Project</div>
+          </div>
+          <div class="conf-main">
+            <div class="conf-page active" id="cp-home">
+              <div class="conf-breadcrumb">PM Portfolio · Thesis · Home</div>
+              <div class="conf-page-title">The Role of AI & Automation Tools in Enhancing IT PM Efficiency</div>
+              <div class="conf-page-meta">Bachelor Thesis · Abdallah Aneed · IU International University · Updated Apr 27, 2026</div>
+              <div class="conf-info">Submission deadline: 06.05.2026 · Supervisor: Dr. Muhammad Ashfaq</div>
+              <div class="conf-section-h">Project Details</div>
+              <table class="conf-table">
+                <tr><th>Field</th><th>Detail</th></tr>
+                <tr><td>Methodology</td><td>Systematic Literature Review (PRISMA)</td></tr>
+                <tr><td>Sources included</td><td>38 peer-reviewed studies</td></tr>
+                <tr><td>Records screened</td><td>742,873 → 277 full-text → 38 final</td></tr>
+                <tr><td>Status</td><td><span class="conf-badge" style="background:#2a1a00;color:#EF9F27;">In Progress</span></td></tr>
+              </table>
+            </div>
+            <div class="conf-page" id="cp-charter">
+              <div class="conf-breadcrumb">PM Portfolio · Thesis · Project Charter</div>
+              <div class="conf-page-title">Project Charter</div>
+              <div class="conf-page-meta">Created by Abdallah Aneed · Apr 6, 2026</div>
+              <div class="conf-section-h">Research Question</div>
+              <div class="conf-info">What is the effect of AI and automation tools on the efficiency and effectiveness of IT project management processes?</div>
+              <div class="conf-section-h">Scope</div>
+              <table class="conf-table">
+                <tr><th>In Scope</th><th>Out of Scope</th></tr>
+                <tr><td>Peer-reviewed articles 2021–2026</td><td>Primary data collection</td></tr>
+                <tr><td>AI/automation in planning, risk, communication, agile</td><td>Books, theses, proceedings</td></tr>
+                <tr><td>English publications</td><td>Studies without direct PM relevance</td></tr>
+              </table>
+              <div class="conf-section-h">Timeline</div>
+              <div class="conf-body">06.04.2026 – 06.05.2026 · Single researcher · Secondary data only</div>
+            </div>
+            <div class="conf-page" id="cp-risk">
+              <div class="conf-breadcrumb">PM Portfolio · Thesis · Risk Register</div>
+              <div class="conf-page-title">Risk Register</div>
+              <div class="conf-page-meta">Updated Apr 27, 2026</div>
+              <table class="conf-table">
+                <tr><th>Risk</th><th>Impact</th><th>Status</th></tr>
+                <tr><td>Insufficient PRISMA sources found</td><td>High</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">Mitigated</span></td></tr>
+                <tr><td>Supervisor requests major revision</td><td>High</td><td><span class="conf-badge" style="background:#0d1f33;color:#4a90d9;">Monitoring</span></td></tr>
+                <tr><td>Scope too broad for 4 analytical themes</td><td>Medium</td><td><span class="conf-badge" style="background:#2a1a00;color:#EF9F27;">Active</span></td></tr>
+                <tr><td>Timeline slippage due to study obligations</td><td>Medium</td><td><span class="conf-badge" style="background:#2a1a00;color:#EF9F27;">Active</span></td></tr>
+                <tr><td>AI content flagged by IU plagiarism detection</td><td>High</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">Mitigated</span></td></tr>
+              </table>
+            </div>
+            <div class="conf-page" id="cp-research">
+              <div class="conf-breadcrumb">PM Portfolio · Thesis · Research Log</div>
+              <div class="conf-page-title">Research Log</div>
+              <div class="conf-page-meta">38 sources included · Updated continuously</div>
+              <div class="conf-info">PRISMA: 742,873 records → 277 full-text assessed → 38 final studies</div>
+              <table class="conf-table">
+                <tr><th>Author(s)</th><th>Year</th><th>Chapter</th><th>Relevance</th></tr>
+                <tr><td>Taboada et al.</td><td>2023</td><td>2, 4</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">High</span></td></tr>
+                <tr><td>Nenni et al.</td><td>2025</td><td>2, 4.2</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">High</span></td></tr>
+                <tr><td>Müller et al. (PMI)</td><td>2024</td><td>1, 2.2</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">High</span></td></tr>
+                <tr><td>Koszykowski & Orzeszko</td><td>2025</td><td>4.1</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">High</span></td></tr>
+                <tr><td>Felicetti et al.</td><td>2024</td><td>4.3</td><td><span class="conf-badge" style="background:#0d2a1a;color:#5aaa7a;">High</span></td></tr>
+              </table>
+            </div>
+            <div class="conf-page" id="cp-lessons">
+              <div class="conf-breadcrumb">PM Portfolio · Thesis · Lessons Learned</div>
+              <div class="conf-page-title">Lessons Learned</div>
+              <div class="conf-page-meta">Updated progressively · Final entries after submission</div>
+              <table class="conf-table">
+                <tr><th>Phase</th><th>Lesson</th></tr>
+                <tr><td>Literature Search</td><td>Initial query returned 742K records — apply filters immediately</td></tr>
+                <tr><td>Source Selection</td><td>Many high-ranking articles had no PM relevance despite matching keywords</td></tr>
+                <tr><td>Project Setup</td><td>Jira + Confluence added structure to what felt like a solo project</td></tr>
+                <tr><td>Writing</td><td>Writing Ch.1–2 before finalizing all sources caused some rework</td></tr>
+              </table>
+            </div>
+            <div class="conf-page" id="cp-sap">
+              <div class="conf-breadcrumb">PM Portfolio · SAP Project · Home</div>
+              <div class="conf-page-title">SAP S/4HANA Implementation</div>
+              <div class="conf-page-meta">Portfolio Case Study · Fictional German Enterprise · MittelTech GmbH</div>
+              <div class="conf-info">Fictional scenario: 500-employee German manufacturer migrating to SAP S/4HANA · May–July 2026</div>
+              <table class="conf-table">
+                <tr><th>Field</th><th>Detail</th></tr>
+                <tr><td>Methodology</td><td>SAFe Agile + PRINCE2</td></tr>
+                <tr><td>Budget</td><td>€280,000 (fictional)</td></tr>
+                <tr><td>Status</td><td><span class="conf-badge" style="background:#2a1a00;color:#EF9F27;">In Progress</span></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="artifact-note de">Vollständiges Projektwiki in Atlassian Confluence — strukturiert wie ein echtes PM-Projekt mit Charter, Risikoregister, Quellenprotokoll und Lessons Learned. Klick auf die Seitenlinks zum Navigieren.</p>
+      <p class="artifact-note en" style="display:none">Full project wiki in Atlassian Confluence — structured like a real PM project with charter, risk register, research log, and lessons learned. Click the sidebar pages to navigate.</p>
+    </div>
+  </div>
+
+  <!-- GANTT -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Projektzeitplan — Gantt</span>
+      <span class="en" style="display:none">Project Timeline — Gantt</span>
+    </p>
+    <div class="artifact-block">
+      <p class="artifact-caption">
+        <span class="de">03 — Thesis Projektphasen · 06.04 – 06.05.2026</span>
+        <span class="en" style="display:none">03 — Thesis Project Phases · 06.04 – 06.05.2026</span>
+      </p>
+      <div class="artifact-wrap">
+        <div class="gantt-wrap">
+          <div class="gantt-months">
+            <div class="gantt-month">Apr 6</div>
+            <div class="gantt-month">Apr 13</div>
+            <div class="gantt-month">Apr 20</div>
+            <div class="gantt-month">Apr 27</div>
+            <div class="gantt-month">May 4</div>
+          </div>
+          <div class="gantt-row">
+            <div class="gantt-label" style="font-size:9px;color:var(--subtle);">Project Initiation</div>
+            <div class="gantt-track">
+              <div class="gantt-bar" style="left:0%;width:30%;background:#1a3a5c;color:#4a90d9;">Charter · Stakeholders</div>
+            </div>
+            <div class="gantt-date" style="font-size:9px;color:var(--subtle);">Apr 6–18</div>
+          </div>
+          <div class="gantt-row">
+            <div class="gantt-label" style="font-size:9px;color:var(--subtle);">Literature Review</div>
+            <div class="gantt-track">
+              <div class="gantt-bar" style="left:5%;width:40%;background:#0d2a1a;color:#5aaa7a;">PRISMA · 742K → 38</div>
+            </div>
+            <div class="gantt-date" style="font-size:9px;color:var(--subtle);">Apr 8–25</div>
+          </div>
+          <div class="gantt-row">
+            <div class="gantt-label" style="font-size:9px;color:var(--subtle);">Analysis & Synthesis</div>
+            <div class="gantt-track">
+              <div class="gantt-bar" style="left:35%;width:35%;background:#1a1500;color:#c8a84b;">4 Thematic Areas</div>
+            </div>
+            <div class="gantt-date" style="font-size:9px;color:var(--subtle);">Apr 20–May 3</div>
+          </div>
+          <div class="gantt-row">
+            <div class="gantt-label" style="font-size:9px;color:var(--subtle);">Writing & Drafting</div>
+            <div class="gantt-track">
+              <div class="gantt-bar" style="left:30%;width:50%;background:#1a1a2e;color:#9b8ec4;">Ch. 1 – Ch. 5</div>
+            </div>
+            <div class="gantt-date" style="font-size:9px;color:var(--subtle);">Apr 18–May 4</div>
+          </div>
+          <div class="gantt-row">
+            <div class="gantt-label" style="font-size:9px;color:var(--subtle);">Review & Submission</div>
+            <div class="gantt-track">
+              <div class="gantt-bar" style="left:75%;width:25%;background:#2a0d0d;color:#c47a6a;">Review · Submit</div>
+            </div>
+            <div class="gantt-date" style="font-size:9px;color:var(--subtle);">May 2–6</div>
+          </div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:14px;">
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#639922;"></div><span style="font-size:9px;color:var(--subtle);">Done</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#EF9F27;"></div><span style="font-size:9px;color:var(--subtle);">In Progress</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:2px;background:#4a90d9;"></div><span style="font-size:9px;color:var(--subtle);">Milestone: Submission 06.05.2026</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="artifact-note de">Projektphasen über 31 Tage — von der Initiierung bis zur finalen Abgabe am 06.05.2026.</p>
+      <p class="artifact-note en" style="display:none">Project phases across 31 days — from initiation to final submission on 06.05.2026.</p>
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Zentrale Erkenntnisse</span>
+      <span class="en" style="display:none">Key Findings</span>
+    </p>
+    <div class="findings-list">
+      <div class="finding-item">
+        <span class="finding-num">1</span>
+        <span class="de">KI ist am effektivsten in datenintensiven PM-Prozessen: Kostenplanung (64 % der Befragten erwarten hohe Auswirkung), Schedule Management (51 %) und Risikomanagement (47 %) — laut PMI-Umfrage unter 2.314 Fachleuten in 129 Ländern.</span>
+        <span class="en" style="display:none">AI is most effective in data-intensive PM processes: cost estimation (64% of respondents expect high impact), schedule management (51%), and risk management (47%) — per PMI survey of 2,314 professionals across 129 countries.</span>
+      </div>
+      <div class="finding-item">
+        <span class="finding-num">2</span>
+        <span class="de">Machine Learning verbessert die Effort-Schätzung erheblich — künstliche neuronale Netze dominieren in ca. 70 der identifizierten Studien. Ensemble-Methoden übertreffen dabei stets Einzel-Algorithmen.</span>
+        <span class="en" style="display:none">Machine learning significantly improves effort estimation — artificial neural networks dominate approximately 70 of identified studies. Ensemble methods consistently outperform single algorithms across varying data conditions.</span>
+      </div>
+      <div class="finding-item">
+        <span class="finding-num">3</span>
+        <span class="de">Generative KI wird von 86 % der Praktiker als nützlich für die Planungsphase eingestuft — aber 74 % haben ambivalente oder negative Gefühle gegenüber einer breiten KI-Einführung aufgrund von Job-Sicherheit und Datenschutzbedenken.</span>
+        <span class="en" style="display:none">Generative AI is rated as useful for planning processes by 86% of practitioners — yet 74% hold ambivalent or negative feelings toward broad AI adoption due to job security and data privacy concerns.</span>
+      </div>
+      <div class="finding-item">
+        <span class="finding-num">4</span>
+        <span class="de">KI ergänzt den Projektmanager, ersetzt ihn aber nicht: Stakeholder-Engagement, Teamentwicklung und politisch sensible Entscheidungen bleiben strukturell nicht automatisierbar.</span>
+        <span class="en" style="display:none">AI complements the project manager but does not replace them: stakeholder engagement, team development, and politically sensitive decisions remain structurally non-automatable.</span>
+      </div>
+      <div class="finding-item">
+        <span class="finding-num">5</span>
+        <span class="de">Die größten Implementierungsbarrieren sind fehlende Datenqualität, fehlende Echtzeit-Validierung von KI-Modellen und das Fehlen klarer Implementierungsframeworks — identifiziert in über 215 Studien (Nenni et al., 2025).</span>
+        <span class="en" style="display:none">The biggest implementation barriers are data quality gaps, lack of real-world validation of AI models, and absence of clear implementation frameworks — identified across 215+ studies (Nenni et al., 2025).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFLECTION -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Erkenntnisse als Projektmanager</span>
+      <span class="en" style="display:none">PM Takeaways</span>
+    </p>
+    <div class="reflection-grid">
+      <div class="reflection-item">
+        <span class="reflection-icon">→</span>
+        <span class="de">Ein Solo-Forschungsprojekt mit Jira und Confluence zu managen macht den PM-Prozess sichtbar — Deadlines, Risiken und Abhängigkeiten werden greifbar, nicht nur gefühlt.</span>
+        <span class="en" style="display:none">Managing a solo research project with Jira and Confluence makes the PM process visible — deadlines, risks, and dependencies become concrete, not just felt.</span>
+      </div>
+      <div class="reflection-item">
+        <span class="reflection-icon">→</span>
+        <span class="de">Das PRISMA-Framework ist ein PM-Prozess in Miniatur: Scope Definition, Inclusion/Exclusion Criteria, Quality Gates und eine strukturierte Lieferkette von 742K zu 38 Quellen.</span>
+        <span class="en" style="display:none">The PRISMA framework is a PM process in miniature: scope definition, inclusion/exclusion criteria, quality gates, and a structured delivery pipeline from 742K to 38 sources.</span>
+      </div>
+      <div class="reflection-item">
+        <span class="reflection-icon">→</span>
+        <span class="de">KI kann den Projektmanager entlasten — aber nur, wenn die Dateninfrastruktur stimmt. Ohne strukturierte historische Daten trainieren ML-Modelle ins Leere.</span>
+        <span class="en" style="display:none">AI can relieve the project manager — but only if data infrastructure is in place. Without structured historical data, ML models have nothing to learn from.</span>
+      </div>
+      <div class="reflection-item">
+        <span class="reflection-icon">→</span>
+        <span class="de">65 % der Befragten geben an, keine oder nur grundlegende KI-Kenntnisse zu haben. Der technische Einstieg ist niedrig — die organisatorische Bereitschaft ist die eigentliche Hürde.</span>
+        <span class="en" style="display:none">65% of surveyed professionals report no or only basic AI knowledge. The technical barrier to entry is low — organizational readiness is the real hurdle.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="section">
+    <p class="section-label">
+      <span class="de">Projektartefakte</span>
+      <span class="en" style="display:none">Project Artifacts</span>
+    </p>
+    <div class="links-row">
+      <a class="ext-link" href="sap-pm.html">
+        → <span class="de">SAP Case Study ansehen</span><span class="en" style="display:none">View SAP Case Study</span>
+      </a>
+      <a class="ext-link" href="https://aneed-project.atlassian.net" target="_blank" rel="noopener">
+        → Jira Workspace
+      </a>
+      <a class="ext-link" href="index.html">
+        ← <span class="de">Zurück zum Portfolio</span><span class="en" style="display:none">Back to Portfolio</span>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Abdallah Aneed · aneed.work</p>
+  <p style="color: var(--subtle);">Bonn, Deutschland</p>
+</footer>
+
+<script>
+  let lang = 'de';
+  function toggleLang() {
+    lang = lang === 'de' ? 'en' : 'de';
+    document.querySelectorAll('.de').forEach(el => el.style.display = lang === 'de' ? '' : 'none');
+    document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+    document.documentElement.lang = lang;
+  }
+  function showConfPage(id, el) {
+    document.querySelectorAll('.conf-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.conf-nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('cp-' + id).classList.add('active');
+    if (el) el.classList.add('active');
+  }
+</script>
+</body>
+</html>
