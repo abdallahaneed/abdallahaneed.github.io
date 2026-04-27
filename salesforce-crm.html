@@ -50,6 +50,14 @@
     transition: color 0.2s;
   }
   .nav-name:hover { color: var(--accent); }
+  .btn-lang {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; background: var(--bg3);
+    border: 1px solid var(--border2); color: var(--muted);
+    padding: 6px 14px; cursor: pointer; border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .btn-lang:hover { border-color: var(--accent); color: var(--accent); }
   .nav-back {
     font-family: 'DM Mono', monospace;
     font-size: 11px; letter-spacing: 0.1em;
@@ -245,7 +253,10 @@
 
 <nav>
   <a class="nav-name" href="index.html">Abdallah Aneed</a>
-  <a class="nav-back" href="index.html">← <span class="de">Zurück</span><span class="en" style="display:none">Back</span></a>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button class="btn-lang" onclick="toggleLang()">EN / DE</button>
+    <a class="nav-back" href="index.html">← <span class="de">Zurück</span><span class="en" style="display:none">Back</span></a>
+  </div>
 </nav>
 
 <main>
@@ -347,7 +358,7 @@
       <div class="screenshot-block">
         <p class="screenshot-caption">
           <span class="de">01 — Opportunity Stages Picklist · <span style="color:var(--muted)">modifiziert von Abdallah Aneed</span></span>
-          <span class="en" style="display:none">01 — Opportunity Stages Picklist · <span style="color:var(--muted)">modified by Abdallah Aneed</span></span>
+          <span class="en" style="display:none">01 — Opportunity Stages Picklist · <span style="color:var(--muted); display:inline">modified by Abdallah Aneed</span></span>
         </p>
         <div class="screenshot-img-wrap" onclick="openLightbox(this)">
           <img src="sf-stages.png" alt="Salesforce Opportunity Stages Picklist">
@@ -430,8 +441,12 @@
 
   function toggleLang() {
     lang = lang === 'de' ? 'en' : 'de';
-    document.querySelectorAll('.de').forEach(el => el.style.display = lang === 'de' ? '' : 'none');
-    document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+    document.querySelectorAll('.de').forEach(el => {
+      el.style.display = lang === 'de' ? '' : 'none';
+    });
+    document.querySelectorAll('.en').forEach(el => {
+      el.style.display = lang === 'en' ? '' : 'none';
+    });
     document.documentElement.lang = lang;
   }
 
