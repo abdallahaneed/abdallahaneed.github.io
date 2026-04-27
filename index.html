@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdallah Aneed · Portfolio</title>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1354WXDCJD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -39,7 +38,6 @@
     min-height: 100vh;
   }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     background: rgba(15,15,15,0.92);
@@ -52,166 +50,95 @@
   }
   .nav-name {
     font-family: 'Fraunces', serif;
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--white);
-    letter-spacing: 0.01em;
+    font-size: 17px; font-weight: 300;
+    color: var(--white); letter-spacing: 0.01em;
   }
   .nav-right { display: flex; gap: 10px; align-items: center; }
   .btn-lang {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    color: var(--muted);
-    padding: 6px 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 3px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; background: var(--bg3);
+    border: 1px solid var(--border2); color: var(--muted);
+    padding: 6px 14px; cursor: pointer; transition: all 0.2s; border-radius: 3px;
   }
   .btn-lang:hover { border-color: var(--accent); color: var(--accent); }
   .btn-cv {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 6px 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 3px;
-    text-decoration: none;
-    display: inline-block;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.08em; background: transparent;
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: 6px 16px; cursor: pointer; transition: all 0.2s;
+    border-radius: 3px; text-decoration: none; display: inline-block;
   }
   .btn-cv:hover { background: var(--accent); color: var(--bg); }
 
-  /* LAYOUT */
   main { max-width: 760px; margin: 0 auto; padding: 100px max(24px,5vw) 80px; }
 
   /* HERO */
   .hero { padding: 60px 0 50px; border-bottom: 1px solid var(--border); margin-bottom: 60px; }
-  .hero-label {
-    font-size: 11px; letter-spacing: 0.15em; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 20px;
-  }
+  .hero-label { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 20px; }
   .hero-name {
     font-family: 'Fraunces', serif;
-    font-size: clamp(38px, 7vw, 62px);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--white);
-    margin-bottom: 18px;
+    font-size: clamp(38px, 7vw, 62px); font-weight: 300;
+    line-height: 1.05; color: var(--white); margin-bottom: 18px;
   }
   .hero-name em { font-style: italic; color: var(--accent); }
-  .hero-sub {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 14px;
-    letter-spacing: 0.01em;
-    line-height: 1.6;
-  }
+  .hero-sub { font-size: 13px; color: var(--muted); margin-top: 14px; letter-spacing: 0.01em; line-height: 1.6; }
   .hero-avail {
-    display: inline-block;
-    margin-top: 14px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--subtle);
-    border: 1px solid var(--border2);
-    border-radius: 3px;
-    padding: 4px 12px;
-    transition: all 0.25s ease;
-    cursor: default;
+    display: inline-block; margin-top: 14px; font-size: 11px;
+    letter-spacing: 0.1em; color: var(--subtle);
+    border: 1px solid var(--border2); border-radius: 3px; padding: 4px 12px;
+    transition: all 0.25s ease; cursor: default;
   }
   .hero-avail:hover { border-color: var(--accent); color: var(--accent); background: var(--bg2); }
 
-  /* SECTION */
   section { margin-bottom: 64px; }
   .section-label {
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--subtle); margin-bottom: 24px;
     display: flex; align-items: center; gap: 12px;
   }
-  .section-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
-  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
   /* SKILLS */
   .skills-grid { display: flex; flex-direction: column; gap: 12px; }
   .skill-group {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 18px;
-    transition: all 0.25s ease;
-    cursor: pointer;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 16px 18px;
+    transition: all 0.25s ease; cursor: pointer;
   }
   .skill-group:hover { background: var(--bg3); border-color: var(--accent); transform: translateY(-2px); }
   .skill-group:hover .skill-group-title { color: var(--white); }
   .skill-header { display: flex; justify-content: space-between; align-items: center; }
-  .skill-plus {
-    font-size: 16px; color: var(--subtle); transition: transform 0.25s, color 0.25s;
-    line-height: 1; user-select: none;
-  }
+  .skill-plus { font-size: 16px; color: var(--subtle); transition: transform 0.25s, color 0.25s; line-height: 1; user-select: none; }
   .skill-group.open .skill-plus { transform: rotate(45deg); color: var(--accent); }
-  .skill-body {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.3s ease, margin 0.25s;
-    margin-top: 0;
-  }
+  .skill-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, margin 0.25s; margin-top: 0; }
   .skill-group.open .skill-body { max-height: 200px; margin-top: 10px; }
-  .skill-group-title {
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0; transition: color 0.25s;
-  }
+  .skill-group-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0; transition: color 0.25s; }
   .skill-group p { font-size: 12.5px; color: var(--muted); line-height: 1.9; transition: all 0.25s; }
 
-  /* EXPERIENCE CARDS */
+  /* EXPERIENCE */
   .exp-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: all 0.25s ease;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; margin-bottom: 12px; overflow: hidden; transition: all 0.25s ease;
   }
   .exp-card:hover { border-color: var(--accent); background: var(--bg3); transform: translateY(-2px); }
   .exp-card:hover .exp-title { color: var(--white); font-size: 14.5px; }
   .exp-card:hover .exp-meta { color: var(--text); }
   .exp-card.open { border-color: var(--accent2); transform: none; }
-  .exp-header {
-    padding: 18px 20px;
-    cursor: pointer;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 12px;
-  }
+  .exp-header { padding: 18px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
   .exp-header-left { flex: 1; }
   .exp-title { font-size: 13.5px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
   .exp-meta { font-size: 11px; color: var(--muted); }
-  .exp-toggle {
-    font-size: 18px; color: var(--subtle); transition: transform 0.25s;
-    flex-shrink: 0; margin-top: 2px; user-select: none;
-  }
+  .exp-toggle { font-size: 18px; color: var(--subtle); transition: transform 0.25s; flex-shrink: 0; margin-top: 2px; user-select: none; }
   .exp-card.open .exp-toggle { transform: rotate(45deg); color: var(--accent2); }
-  .exp-body {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.25s;
-    padding: 0 20px;
-  }
+  .exp-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s; padding: 0 20px; }
   .exp-card.open .exp-body { max-height: 600px; padding: 0 20px 18px; }
   .exp-body ul { list-style: none; margin-bottom: 14px; }
-  .exp-body ul li {
-    font-size: 12.5px; color: var(--muted); line-height: 1.75;
-    padding: 3px 0 3px 14px; position: relative;
-  }
-  .exp-body ul li::before {
-    content: '—'; position: absolute; left: 0; color: var(--subtle); font-size: 10px;
-  }
+  .exp-body ul li { font-size: 12.5px; color: var(--muted); line-height: 1.75; padding: 3px 0 3px 14px; position: relative; }
+  .exp-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--subtle); font-size: 10px; }
   .exp-keywords { font-size: 11px; color: var(--subtle); border-top: 1px solid var(--border); padding-top: 12px; }
   .exp-keywords span { color: var(--accent2); }
 
-  /* EDUCATION CARDS */
+  /* EDUCATION */
   .edu-card { opacity: 0.85; }
   .edu-card:hover { opacity: 1; border-color: var(--accent); background: var(--bg3); transform: translateY(-2px); }
   .edu-card:hover .exp-title { color: var(--white); font-size: 14.5px; }
@@ -220,71 +147,50 @@
   /* PROJECTS */
   .projects-grid { display: flex; flex-direction: column; gap: 14px; }
 
-  /* REAL PROJECT CARD */
   .project-card-real {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 22px 24px;
-    text-decoration: none;
-    display: block;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 22px 24px;
+    text-decoration: none; display: block;
+    transition: all 0.25s ease; position: relative; overflow: hidden;
   }
   .project-card-real::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--card-accent, var(--accent)), transparent);
     opacity: 0; transition: opacity 0.25s;
   }
-  .project-card-real:hover { border-color: var(--accent); background: var(--bg3); transform: translateY(-2px); }
+  .project-card-real:hover { border-color: var(--card-accent, var(--accent)); background: var(--bg3); transform: translateY(-2px); }
   .project-card-real:hover::before { opacity: 1; }
-  .project-card-real:hover .project-arrow { color: var(--accent); transform: translateX(4px); }
+  .project-card-real:hover .project-arrow { color: var(--card-accent, var(--accent)); transform: translateX(4px); }
   .project-card-real:hover .project-card-title { color: var(--white); }
 
-  .project-card-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 16px; margin-bottom: 10px;
-  }
+  .project-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
   .project-card-left { flex: 1; }
-  .project-card-type {
-    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--subtle); margin-bottom: 6px;
-  }
+  .project-card-type { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--subtle); margin-bottom: 6px; }
   .project-card-title {
-    font-family: 'Fraunces', serif;
-    font-size: 18px; font-weight: 300;
-    color: var(--text); line-height: 1.2;
-    transition: color 0.25s;
+    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300;
+    color: var(--text); line-height: 1.2; transition: color 0.25s;
   }
-  .project-card-title em { font-style: italic; color: var(--accent); }
-  .project-arrow {
-    font-size: 18px; color: var(--subtle);
-    flex-shrink: 0; margin-top: 4px;
-    transition: color 0.25s, transform 0.25s;
-  }
-  .project-card-desc {
-    font-size: 12px; color: var(--muted);
-    line-height: 1.8; margin-bottom: 16px;
-  }
+  .project-card-title em { font-style: italic; }
+  .project-arrow { font-size: 18px; color: var(--subtle); flex-shrink: 0; margin-top: 4px; transition: color 0.25s, transform 0.25s; }
+  .project-card-desc { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .project-tag {
     font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
     border: 1px solid var(--border2); color: var(--subtle);
-    padding: 3px 9px; border-radius: 2px;
-    transition: all 0.2s;
+    padding: 3px 9px; border-radius: 2px; transition: all 0.2s;
   }
   .project-card-real:hover .project-tag { border-color: var(--border); color: var(--muted); }
 
-  /* COMING SOON CARD */
+  /* STATUS BADGE on card */
+  .card-status {
+    display: inline-block; font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
+    margin-bottom: 8px; font-family: 'DM Mono', monospace;
+  }
+
   .project-card-soon {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px 24px;
-    opacity: 0.45;
-    transition: opacity 0.2s;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 20px 24px; opacity: 0.45; transition: opacity 0.2s;
   }
   .project-card-soon:hover { opacity: 0.65; }
   .project-card-soon p { font-size: 12.5px; color: var(--muted); }
@@ -295,13 +201,11 @@
     display: flex; align-items: center; gap: 8px;
     background: var(--bg2); border: 1px solid var(--border);
     border-radius: 4px; padding: 12px 18px;
-    text-decoration: none; color: var(--muted);
-    font-size: 12.5px; transition: all 0.2s;
+    text-decoration: none; color: var(--muted); font-size: 12.5px; transition: all 0.2s;
   }
   .contact-link:hover { border-color: var(--accent); color: var(--accent); }
   .contact-link-icon { font-size: 13px; }
 
-  /* FORM */
   .contact-form { display: flex; flex-direction: column; gap: 12px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .form-field { display: flex; flex-direction: column; gap: 6px; }
@@ -324,7 +228,6 @@
   .form-submit:hover { background: var(--accent); color: var(--bg); }
   .form-note { font-size: 11px; color: var(--subtle); margin-top: 4px; }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 24px max(24px,5vw);
@@ -345,14 +248,8 @@
   <span class="nav-name">Abdallah Aneed</span>
   <div class="nav-right">
     <button class="btn-lang" onclick="toggleLang()">EN / DE</button>
-    <a class="btn-cv" href="Abdallah_Aneed_CV.pdf" download>
-      <span class="de">CV</span>
-      <span class="en" style="display:none">CV</span>
-    </a>
-    <a class="btn-cv" href="Abdallah_Aneed_Portfolio.pdf" download style="border-color: var(--muted); color: var(--muted);">
-      <span class="de">Portfolio</span>
-      <span class="en" style="display:none">Portfolio</span>
-    </a>
+    <a class="btn-cv" href="Abdallah_Aneed_CV.pdf" download>CV</a>
+    <a class="btn-cv" href="Abdallah_Aneed_Portfolio.pdf" download style="border-color: var(--muted); color: var(--muted);">Portfolio</a>
   </div>
 </nav>
 
@@ -362,8 +259,8 @@
   <div class="hero">
     <p class="hero-label">Portfolio · aneed.work</p>
     <h1 class="hero-name">Abdallah <em>Aneed</em></h1>
-    <p class="hero-sub de">Business & IT Student · Offen für Trainee- und Junior-Stellen in IT, Produktmanagement & Prozessberatung</p>
-    <p class="hero-sub en" style="display:none">Business & IT Student · Open to trainee and junior roles in IT, product management & process consulting</p>
+    <p class="hero-sub de">Business & IT Student · Offen für Trainee- und Junior-Stellen in IT-Projektmanagement, Produktmanagement & Prozessberatung</p>
+    <p class="hero-sub en" style="display:none">Business & IT Student · Open to trainee and junior roles in IT Project Management, product management & process consulting</p>
     <p class="hero-avail de">Verfügbar ab Juli 2026</p>
     <p class="hero-avail en" style="display:none">Available from July 2026</p>
   </div>
@@ -374,15 +271,47 @@
       <span class="de">Kenntnisse</span><span class="en" style="display:none">Skills</span>
     </p>
     <div class="skills-grid">
+
+      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <p class="skill-group-title"><span class="de">IT-Projektmanagement</span><span class="en" style="display:none">IT Project Management</span></p>
+          <span class="skill-plus">+</span>
+        </div>
+        <div class="skill-body">
+          <p>Jira · Confluence · Agile · SAFe · PRINCE2<br>
+          <span class="de">Risikomanagement · Stakeholder-Management<br>Projektcharter · Gantt · Kanban</span>
+          <span class="en" style="display:none">Risk Management · Stakeholder Management<br>Project Charter · Gantt · Kanban</span>
+          </p>
+        </div>
+      </div>
+
       <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
         <div class="skill-header">
           <p class="skill-group-title"><span class="de">Analyse & Prozesse</span><span class="en" style="display:none">Analysis & Processes</span></p>
           <span class="skill-plus">+</span>
         </div>
         <div class="skill-body">
-          <p>Jira · Confluence<br>Excel · Testmanagement<br>Bug-Tracking · Dokumentation</p>
+          <p>Excel · Testmanagement · Bug-Tracking<br>
+          <span class="de">Dokumentation · Wettbewerbsanalyse · PRISMA</span>
+          <span class="en" style="display:none">Documentation · Competitor Analysis · PRISMA</span>
+          </p>
         </div>
       </div>
+
+      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
+        <div class="skill-header">
+          <p class="skill-group-title"><span class="de">Enterprise-Systeme</span><span class="en" style="display:none">Enterprise Systems</span></p>
+          <span class="skill-plus">+</span>
+        </div>
+        <div class="skill-body">
+          <p>SAP S/4HANA · Salesforce CRM<br>
+          Sales Cloud · Flow Automation<br>
+          <span class="de">Berichte & Dashboards</span>
+          <span class="en" style="display:none">Reports & Dashboards</span>
+          </p>
+        </div>
+      </div>
+
       <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
         <div class="skill-header">
           <p class="skill-group-title"><span class="de">Design & Entwicklung</span><span class="en" style="display:none">Design & Development</span></p>
@@ -392,30 +321,20 @@
           <p>Figma · Java · SwiftUI<br>HTML / CSS · JavaScript</p>
         </div>
       </div>
+
       <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
         <div class="skill-header">
-          <p class="skill-group-title"><span class="de">Kommunikation</span><span class="en" style="display:none">Communication</span></p>
+          <p class="skill-group-title"><span class="de">Kommunikation & Sprachen</span><span class="en" style="display:none">Communication & Languages</span></p>
           <span class="skill-plus">+</span>
         </div>
         <div class="skill-body">
           <p>PowerPoint · Microsoft Forms<br>
-          <span class="de">Deutsch C1 · Englisch fließend<br>Arabisch Muttersprache</span>
-          <span class="en" style="display:none">German C1 · English fluent<br>Arabic native</span>
+          <span class="de">Deutsch C1 · Englisch fließend · Arabisch Muttersprache</span>
+          <span class="en" style="display:none">German C1 · English fluent · Arabic native</span>
           </p>
         </div>
       </div>
-      <div class="skill-group skill-expandable" onclick="toggleSkill(this)">
-        <div class="skill-header">
-          <p class="skill-group-title"><span class="de">CRM & Salesforce</span><span class="en" style="display:none">CRM & Salesforce</span></p>
-          <span class="skill-plus">+</span>
-        </div>
-        <div class="skill-body">
-          <p>Salesforce CRM<br>Sales Cloud · Service Cloud<br>
-          <span class="de">Flows & Automatisierung<br>Berichte & Dashboards</span>
-          <span class="en" style="display:none">Flows & Automation<br>Reports & Dashboards</span>
-          </p>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -513,8 +432,78 @@
     </p>
     <div class="projects-grid">
 
-      <!-- REAL PROJECT CARD -->
-      <a class="project-card-real" href="salesforce-crm.html">
+      <!-- THESIS PM CASE STUDY -->
+      <a class="project-card-real" href="thesis-pm.html" style="--card-accent: #4a90d9;">
+        <div class="project-card-header">
+          <div class="project-card-left">
+            <p class="project-card-type">
+              <span class="de">IT-Projektmanagement · Agile · Forschung</span>
+              <span class="en" style="display:none">IT Project Management · Agile · Research</span>
+            </p>
+            <h2 class="project-card-title">
+              <span class="de"><em>KI & Automatisierung</em> im IT-Projektmanagement</span>
+              <span class="en" style="display:none"><em>AI & Automation</em> in IT Project Management</span>
+            </h2>
+          </div>
+          <span class="project-arrow">→</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="card-status" style="background:#0d1f33;color:#4a90d9;border:1px solid #1a3a5c;">Jira · Confluence</span>
+          <span class="card-status" style="background:#1a1500;color:#EF9F27;border:1px solid #2a2200;">In Progress</span>
+        </div>
+        <p class="project-card-desc de">
+          Bachelor Thesis als PM-Case-Study: Systematische Literaturrecherche (PRISMA, 38 Studien aus 742K) zu KI im IT-Projektmanagement — gemanagt mit Jira Kanban Board, Confluence Wiki, Gantt-Zeitplan und vollständiger Projektdokumentation.
+        </p>
+        <p class="project-card-desc en" style="display:none">
+          Bachelor thesis as PM case study: systematic literature review (PRISMA, 38 studies from 742K) on AI in IT project management — managed with Jira Kanban board, Confluence wiki, Gantt timeline, and full project documentation.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Jira</span>
+          <span class="project-tag">Confluence</span>
+          <span class="project-tag">Agile PM</span>
+          <span class="project-tag">PRISMA</span>
+          <span class="project-tag">Risk Management</span>
+          <span class="project-tag">AI in PM</span>
+        </div>
+      </a>
+
+      <!-- SAP CASE STUDY -->
+      <a class="project-card-real" href="sap-pm.html" style="--card-accent: #d07040;">
+        <div class="project-card-header">
+          <div class="project-card-left">
+            <p class="project-card-type">
+              <span class="de">ERP-Implementierung · IT-Projektmanagement · SAFe</span>
+              <span class="en" style="display:none">ERP Implementation · IT Project Management · SAFe</span>
+            </p>
+            <h2 class="project-card-title">
+              <span class="de"><em>SAP S/4HANA</em> Implementierung — MittelTech GmbH</span>
+              <span class="en" style="display:none"><em>SAP S/4HANA</em> Implementation — MittelTech GmbH</span>
+            </h2>
+          </div>
+          <span class="project-arrow">→</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="card-status" style="background:#1a0a00;color:#d07040;border:1px solid #2a1500;">SAP · SAFe · PRINCE2</span>
+          <span class="card-status" style="background:#1a1500;color:#EF9F27;border:1px solid #2a2200;">In Progress</span>
+        </div>
+        <p class="project-card-desc de">
+          Portfolio-Case-Study: Leitung einer SAP S/4HANA-Migration für ein fiktives deutsches Fertigungsunternehmen (500 MA, €280K Budget). Jira Projektboard, SAP Dashboard, Risikoregister mit DSGVO-Fokus und Confluence-Projektdokumentation.
+        </p>
+        <p class="project-card-desc en" style="display:none">
+          Portfolio case study: leading a SAP S/4HANA migration for a fictional German manufacturing company (500 employees, €280K budget). Jira project board, SAP dashboard, risk register with GDPR focus, and Confluence project documentation.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">SAP S/4HANA</span>
+          <span class="project-tag">SAFe Agile</span>
+          <span class="project-tag">PRINCE2</span>
+          <span class="project-tag">Jira</span>
+          <span class="project-tag">ERP</span>
+          <span class="project-tag">Change Management</span>
+        </div>
+      </a>
+
+      <!-- SALESFORCE CRM -->
+      <a class="project-card-real" href="salesforce-crm.html" style="--card-accent: #c8b89a;">
         <div class="project-card-header">
           <div class="project-card-left">
             <p class="project-card-type">
@@ -543,12 +532,6 @@
           <span class="project-tag">CRM</span>
         </div>
       </a>
-
-      <!-- COMING SOON -->
-      <div class="project-card-soon">
-        <p class="de">Weitere Projekte folgen.</p>
-        <p class="en" style="display:none">More projects coming soon.</p>
-      </div>
 
     </div>
   </section>
@@ -633,7 +616,7 @@
 </main>
 
 <footer>
-  <p>© 2025 Abdallah Aneed · aneed.work</p>
+  <p>© 2026 Abdallah Aneed · aneed.work</p>
   <p style="color: var(--subtle);">Bonn, Deutschland</p>
 </footer>
 
@@ -642,12 +625,8 @@
 
   function toggleLang() {
     lang = lang === 'de' ? 'en' : 'de';
-    document.querySelectorAll('.de').forEach(el => {
-      el.style.display = lang === 'de' ? '' : 'none';
-    });
-    document.querySelectorAll('.en').forEach(el => {
-      el.style.display = lang === 'en' ? '' : 'none';
-    });
+    document.querySelectorAll('.de').forEach(el => el.style.display = lang === 'de' ? '' : 'none');
+    document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
     document.documentElement.lang = lang;
   }
 
