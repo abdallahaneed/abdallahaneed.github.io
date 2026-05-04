@@ -15,6 +15,20 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
+    --bg: #f5f2ed;
+    --bg2: #edeae4;
+    --bg3: #e4e0d8;
+    --border: #d4d0c8;
+    --border2: #bebab2;
+    --text: #2a2824;
+    --muted: #706c65;
+    --subtle: #a09b93;
+    --accent: #7a5c35;
+    --accent2: #1e5a9e;
+    --white: #1a1814;
+    --nav-bg: rgba(245,242,237,0.94);
+  }
+  body.dark {
     --bg: #0f0f0f;
     --bg2: #161616;
     --bg3: #1e1e1e;
@@ -26,6 +40,7 @@
     --accent: #c8b89a;
     --accent2: #4a90d9;
     --white: #f0f0f0;
+    --nav-bg: rgba(15,15,15,0.92);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -36,11 +51,12 @@
     font-size: 14px;
     line-height: 1.7;
     min-height: 100vh;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(15,15,15,0.92);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     z-index: 100;
@@ -61,6 +77,13 @@
     padding: 6px 14px; cursor: pointer; transition: all 0.2s; border-radius: 3px;
   }
   .btn-lang:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-theme {
+    font-family: 'DM Mono', monospace; font-size: 14px;
+    background: var(--bg3); border: 1px solid var(--border2); color: var(--muted);
+    padding: 5px 10px; cursor: pointer; transition: all 0.2s; border-radius: 3px;
+    line-height: 1; width: 34px; text-align: center;
+  }
+  .btn-theme:hover { border-color: var(--accent); color: var(--accent); }
   .btn-cv {
     font-family: 'DM Mono', monospace; font-size: 11px;
     letter-spacing: 0.08em; background: transparent;
@@ -243,10 +266,12 @@
 </style>
 </head>
 <body>
+<script>if(localStorage.getItem('theme')!=='light')document.body.classList.add('dark');</script>
 
 <nav>
   <span class="nav-name">Abdallah Aneed</span>
   <div class="nav-right">
+    <button class="btn-theme" id="btn-theme" onclick="toggleTheme()" title="Toggle theme">☾</button>
     <button class="btn-lang" onclick="toggleLang()">EN / DE</button>
     <a class="btn-cv" href="Abdallah_Aneed_CV.pdf" download>CV</a>
     <a class="btn-cv" href="Abdallah_Aneed_Portfolio.pdf" download style="border-color: var(--muted); color: var(--muted);">Portfolio</a>
@@ -622,6 +647,17 @@
 
 <script>
   let lang = 'de';
+
+  function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    document.getElementById('btn-theme').textContent = isDark ? '☀' : '☾';
+  }
+
+  (function() {
+    const isDark = document.body.classList.contains('dark');
+    document.getElementById('btn-theme').textContent = isDark ? '☀' : '☾';
+  })();
 
   function toggleLang() {
     lang = lang === 'de' ? 'en' : 'de';
