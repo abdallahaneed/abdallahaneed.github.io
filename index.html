@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-qCEYrLOZBLRZcGgA/jB+wZIFRNdy4OGWMmjdf7O2thU='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3Owz6GXjlJHWYrnPMyiKdtdi8b+eaHwEGQDN2zdL818='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Abdallah Aneed, SAP Certified Implementation Consultant aus Bonn. S/4HANA, FI, CO, MM, SD, PP.">
 <meta name="theme-color" content="#4B624B">
@@ -130,13 +130,20 @@ a{color:inherit}
 .app-f{display:none!important}
 .m .app-f{display:block!important}
 .teaser{display:none}
-.m .teaser{display:block;position:absolute;left:24px;right:24px;bottom:120px;text-align:left;background:var(--glass);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:18px;padding:16px 18px;cursor:pointer}
+.m .teaser{display:block;position:absolute;left:24px;right:24px;bottom:138px;text-align:left;background:var(--glass);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:18px;padding:16px 18px;cursor:pointer}
 .teaser .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);font-weight:600}
 .teaser h3{margin:4px 0 4px;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:28px;line-height:1}
 .teaser p{margin:0;font-size:14px;color:var(--muted)}
 .teaser .go{margin-top:12px}
+.legalbar{display:none}
+.m .legalbar{display:flex;justify-content:center;gap:18px;position:absolute;left:0;right:0;bottom:7px;z-index:50;font-size:12px}
+.m .legalbar button{background:none;border:0;padding:2px 0;color:var(--muted);cursor:pointer;font:inherit}
+.m .legalbar button:active{color:var(--fg)}
+.m .dock{bottom:30px}
+.m .stack{bottom:126px}
+.m .files{display:none!important}
 .m.tight .hint{display:none}
-.m.tight .teaser{bottom:112px;padding:12px 16px}
+.m.tight .teaser{bottom:128px;padding:12px 16px}
 .m.tight .teaser p{display:none}
 .m.tight .teaser h3{font-size:24px}
 .m.tight .teaser .go{margin-top:8px}
@@ -158,15 +165,15 @@ html[data-lang="en"] .de{display:none!important}
 /* phone version */
 .m .menubar{height:40px;padding:0 16px;font-size:14px}
 .m .menubar .r{gap:12px}
-.m #win-work{left:8px;right:8px;top:48px;bottom:100px;width:auto;height:auto}
-.m #win-contact{left:8px;right:8px;top:auto;bottom:100px;width:auto}
-.m .widget{left:8px;right:8px;top:48px;bottom:100px;width:auto;overflow-y:auto}
+.m #win-work{left:8px;right:8px;top:48px;bottom:118px;width:auto;height:auto}
+.m #win-contact{left:8px;right:8px;top:auto;bottom:118px;width:auto}
+.m .widget{left:8px;right:8px;top:48px;bottom:118px;width:auto;overflow-y:auto}
 .m .titlebar{cursor:default}
 .m .desk{top:72px}
 
 /* document window: case studies, about, cv, legal */
 #win-doc{left:calc(170px + var(--cx,0px));top:44px;width:1100px;height:748px}
-.m #win-doc{left:8px;right:8px;top:48px;bottom:100px;width:auto;height:auto}
+.m #win-doc{left:8px;right:8px;top:48px;bottom:118px;width:auto;height:auto}
 .doc-body{flex:1;min-height:0;overflow-y:auto;padding:28px 56px 48px;scroll-behavior:smooth}
 .m .doc-body{padding:20px 20px 36px}
 .back{border:0;background:none;padding:0;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;margin-bottom:18px}
@@ -1127,6 +1134,8 @@ html[data-lang="en"] .de{display:none!important}
     <button class="file" type="button" data-doc="privacy"><span class="glyph">§</span><span class="fl"><span class="de">Datenschutz</span><span class="en">Privacy</span></span></button>
   </div>
 
+  <nav class="legalbar" aria-label="Rechtliches"><button type="button" data-doc="impressum">Impressum</button><button type="button" data-doc="privacy"><span class="de">Datenschutz</span><span class="en">Privacy</span></button><button type="button" data-doc="cv"><span class="de">Lebenslauf</span><span class="en">CV</span></button></nav>
+
   <nav class="dock" id="dock" aria-label="Dock">
     <button class="app" type="button" data-open="about" aria-label="About"><span class="tile t-a"><span>AA</span></span><span class="tip"><span class="de">Über mich</span><span class="en">About me</span></span><span class="run"></span></button>
     <button class="app" type="button" data-open="edu" aria-label="Education"><span class="tile t-e"><span>E</span></span><span class="tip"><span class="de">Ausbildung</span><span class="en">Education</span></span><span class="run"></span></button>
@@ -1321,7 +1330,7 @@ document.addEventListener("pointerdown",function(e){
 });
 /* tap or click outside an open window closes it */
 document.addEventListener("pointerdown",function(e){
-  var t=e.target; if(t.closest(".win,.dock,.menubar,.files,.teaser,.stack,[data-doc],[data-openapp]")) return;
+  var t=e.target; if(t.closest(".win,.dock,.legalbar,.menubar,.files,.teaser,.stack,[data-doc],[data-openapp]")) return;
   ["work","contact","doc"].forEach(function(id){ if(openState[id]) closeWin(id); });
   if(openState.flow && !t.closest(".widget")){ widget.classList.remove("sheet"); openState.flow=false; markRun(); }
 });
