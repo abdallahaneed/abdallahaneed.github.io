@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-MfLT8lePPLBgQ3MnAimdfs7iRLK4jsf9gmM8Xhj5BS0='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-qCEYrLOZBLRZcGgA/jB+wZIFRNdy4OGWMmjdf7O2thU='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Abdallah Aneed, SAP Certified Implementation Consultant aus Bonn. S/4HANA, FI, CO, MM, SD, PP.">
 <meta name="theme-color" content="#4B624B">
@@ -48,7 +48,7 @@ a{color:inherit}
 
 /* the screen */
 .viewport{position:fixed;inset:0;overflow:hidden}
-.stage{position:absolute;left:0;top:0;width:1440px;height:900px;transform-origin:0 0;background:var(--bg);overflow:hidden;border-radius:10px}
+.stage{position:absolute;left:0;top:0;width:1440px;height:900px;transform-origin:0 0;background:var(--bg);overflow:hidden}
 .stage.m{width:430px;height:900px;border-radius:0}
 
 /* moving wall */
@@ -165,7 +165,7 @@ html[data-lang="en"] .de{display:none!important}
 .m .desk{top:72px}
 
 /* document window: case studies, about, cv, legal */
-#win-doc{left:170px;top:44px;width:1100px;height:748px}
+#win-doc{left:calc(170px + var(--cx,0px));top:44px;width:1100px;height:748px}
 .m #win-doc{left:8px;right:8px;top:48px;bottom:100px;width:auto;height:auto}
 .doc-body{flex:1;min-height:0;overflow-y:auto;padding:28px 56px 48px;scroll-behavior:smooth}
 .m .doc-body{padding:20px 20px 36px}
@@ -333,6 +333,7 @@ html[data-lang="en"] .de{display:none!important}
 .m .scroller{padding:20px 16px 150px}
 .scroller::-webkit-scrollbar{display:none}
 .scroller.drag{cursor:grabbing;scroll-snap-type:none}
+.card{touch-action:pan-y}
 .cards{display:flex;gap:22px;width:max-content}
 .card{pointer-events:auto;scroll-snap-align:center;width:340px;height:388px;flex:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;box-shadow:0 18px 40px -18px rgba(20,28,21,.35);user-select:none;will-change:transform}
 .m .card{width:300px;height:360px;padding:20px}
@@ -355,8 +356,8 @@ html[data-lang="en"] .de{display:none!important}
 .lights .y{background:#D9DDD4}
 .lights .z{background:#4B624B}
 .titlebar .ttl{font-size:13px;font-weight:600;flex:1;text-align:center;margin-right:52px}
-#win-work{left:250px;top:62px;width:940px;height:640px}
-#win-contact{left:470px;top:150px;width:500px;height:auto}
+#win-work{left:calc(250px + var(--cx,0px));top:62px;width:940px;height:640px}
+#win-contact{left:calc(470px + var(--cx,0px));top:150px;width:500px;height:auto}
 
 /* segmented tabs */
 .seg{display:flex;position:relative;margin:16px auto 0;padding:3px;background:var(--bg);border:1px solid var(--line);border-radius:9px;width:max-content;max-width:calc(100% - 24px);flex:none}
@@ -1148,8 +1149,11 @@ function layout(){
   stage.classList.toggle("m",mob);
   /* desktop: a 1440 x 900 laptop screen, letterboxed. phone: 430 wide, as tall as the phone */
   if(mob){ W=430; H=Math.max(740,Math.min(1100,Math.round(430*vh/vw))); S=Math.min(vw/W,vh/H); }
-  else { W=1440; H=900; var pad=Math.min(28,vw*.02); S=Math.min((vw-pad*2)/W,(vh-pad*2)/H); }
+  else { S=Math.min(vw/1440,vh/900); W=Math.round(vw/S); H=Math.round(vh/S); }
+  /* desktop: fill the whole browser window; the extra room goes to the sides or the bottom */
+  stage.style.width=mob?"":W+"px";
   stage.style.height=H+"px";
+  stage.style.setProperty("--cx",mob?"0px":Math.round((W-1440)/2)+"px");
   stage.style.transform="scale("+S+")";
   stage.style.left=Math.round((vw-W*S)/2)+"px";
   stage.style.top=Math.round((vh-H*S)/2)+"px";
@@ -1295,16 +1299,31 @@ function closeStack(){
 }
 /* horizontal scrolling: wheel, drag, buttons, keys */
 scroller.addEventListener("wheel",function(e){ if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){scroller.scrollLeft+=e.deltaY; e.preventDefault();} },{passive:false});
+/* mouse and finger drag the same way, then settle on the nearest card */
 var drag=null;
-scroller.addEventListener("pointerdown",function(e){ if(e.pointerType!=="mouse") return; drag={x:e.clientX,l:scroller.scrollLeft}; scroller.classList.add("drag"); });
-window.addEventListener("pointermove",function(e){ if(drag) scroller.scrollLeft=drag.l-(e.clientX-drag.x)/S; });
-window.addEventListener("pointerup",function(){ if(drag){drag=null;scroller.classList.remove("drag")} });
+function stepW(){ return cards[0].offsetWidth+22; }
+scroller.addEventListener("pointerdown",function(e){ if(e.pointerType==="mouse"&&e.button!==0) return; drag={x:e.clientX,l:scroller.scrollLeft,t:performance.now(),v:0,px:e.clientX}; scroller.classList.add("drag"); });
+window.addEventListener("pointermove",function(e){ if(!drag) return;
+  var now=performance.now(), dt=Math.max(1,now-drag.t); drag.v=(e.clientX-drag.px)/S/dt; drag.px=e.clientX; drag.t=now;
+  scroller.scrollLeft=drag.l-(e.clientX-drag.x)/S; });
+function endDrag(){ if(!drag) return; var v=drag.v; drag=null;
+  var target=scroller.scrollLeft-v*220, i=Math.max(0,Math.min(cards.length-1,Math.round(target/stepW())));
+  scroller.scrollTo({left:i*stepW(),behavior:reduce?"auto":"smooth"});
+  setTimeout(function(){ scroller.classList.remove("drag") },reduce?0:420); }
+window.addEventListener("pointerup",endDrag);
+window.addEventListener("pointercancel",endDrag);
 function page(dir){ scroller.scrollBy({left:dir*(cards[0].offsetWidth+22),behavior:reduce?"auto":"smooth"}); }
 document.getElementById("st-prev").onclick=function(){page(-1)};
 document.getElementById("st-next").onclick=function(){page(1)};
 document.addEventListener("keydown",function(e){ if(!openState.edu||e.target.isContentEditable) return; if(e.key==="ArrowRight") page(1); if(e.key==="ArrowLeft") page(-1); });
 document.addEventListener("pointerdown",function(e){
   if(openState.edu && !e.target.closest(".card,.stack-head,.dock,.menubar")) closeStack();
+});
+/* tap or click outside an open window closes it */
+document.addEventListener("pointerdown",function(e){
+  var t=e.target; if(t.closest(".win,.dock,.menubar,.files,.teaser,.stack,[data-doc],[data-openapp]")) return;
+  ["work","contact","doc"].forEach(function(id){ if(openState[id]) closeWin(id); });
+  if(openState.flow && !t.closest(".widget")){ widget.classList.remove("sheet"); openState.flow=false; markRun(); }
 });
 
 /* windows */
