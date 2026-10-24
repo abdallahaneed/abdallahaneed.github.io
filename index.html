@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3Owz6GXjlJHWYrnPMyiKdtdi8b+eaHwEGQDN2zdL818='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-9h3Ow8AiX0FwrX1A46lRwBEvO2wWcJm5mtmHIQleP4s='; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Abdallah Aneed, SAP Certified Implementation Consultant aus Bonn. S/4HANA, FI, CO, MM, SD, PP.">
 <meta name="theme-color" content="#4B624B">
@@ -210,6 +210,39 @@ html[data-lang="en"] .de{display:none!important}
 .m .phases{grid-template-columns:minmax(0,1fr)}
 .phases div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;display:flex;flex-direction:column;gap:4px}
 .phases b{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--moss-text)}
+/* o2c diagram */
+.o2c{display:grid;grid-template-columns:78px minmax(0,1fr);gap:0 16px;margin:6px 0 10px}
+.o2c>*{min-width:0}
+.o2c .lk{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:11px}
+.o2c .row{display:flex;align-items:center;flex-wrap:nowrap;gap:8px 0}
+.o2c .row>.n{flex:0 1 auto;min-width:0}
+.o2c .n{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 12px;font-size:13.5px;font-weight:500;line-height:1.25}
+.o2c .n small{display:block;font-size:11.5px;font-weight:400;color:var(--muted);margin-top:2px}
+.o2c .n.q{border:1.5px dashed var(--signal)}
+.o2c .n.a{background:var(--moss);border-color:var(--moss);color:#F5F5F1}
+.o2c .n.a small{color:rgba(245,245,241,.78)}
+.o2c .n.x{background:var(--signal);border-color:var(--signal);color:#F5F5F1}
+.o2c .n.soft{background:var(--bg);border-style:dashed}
+.o2c .ar{flex:0 0 30px;height:2px;background:var(--muted);position:relative;margin:0 6px 0 4px}
+.o2c .ar::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:6px solid var(--muted);border-right:0}
+.o2c .ar.x{background:var(--signal)}.o2c .ar.x::after{border-left-color:var(--signal)}
+.o2c .gap{flex:0 0 18px}
+.o2c .dn{grid-column:2;position:relative;margin:6px 0 6px 26px;padding:6px 0 10px 14px;border-left:2px solid var(--muted);font-size:12px;color:var(--muted)}
+.o2c .dn::after{content:"";position:absolute;left:-6px;bottom:-1px;border:5px solid transparent;border-top:6px solid var(--muted);border-bottom:0}
+.o2c .sub{grid-column:2;font-size:12px;color:var(--muted);margin:6px 0 0}
+.o2c .sep{grid-column:1/-1;height:1px;background:var(--line);margin:14px 0}
+.m .o2c{grid-template-columns:minmax(0,1fr)}
+.m .o2c .lk{padding:4px 0 8px}
+.m .o2c .dn,.m .o2c .sub{grid-column:1}
+.m .o2c .row{flex-direction:column;align-items:flex-start}
+.m .o2c .ar{flex:0 0 16px;width:2px;height:16px;margin:2px 0 2px 22px}
+.m .o2c .ar::after{right:auto;left:-4px;top:auto;bottom:-1px;border:5px solid transparent;border-top:6px solid var(--muted);border-bottom:0}
+.m .o2c .ar.x::after{border-top-color:var(--signal)}
+.m .o2c .gap{flex:0 0 10px}
+.qa{border-left:3px solid var(--moss);padding:4px 0 4px 16px;margin:0 0 10px}
+.qa p{margin:0 0 8px}
+.qa .who{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 2px}
+.golinks a.go{margin-left:0}
 /* funnel */
 .funnel{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 0 8px}
 .funnel>div{width:var(--w);min-width:150px;max-width:100%;background:var(--moss);color:#F5F5F1;border-radius:6px;padding:9px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px}
@@ -452,8 +485,8 @@ html[data-lang="en"] .de{display:none!important}
       <span class="en"><b>SAP Certified Implementation Consultant</b> from Bonn. S/4HANA, FI, CO, MM, SD, PP.</span>
     </p>
     <p class="intro">
-      <span class="de">Seit Oktober zertifiziert für End-to-End-Prozesse in SAP S/4HANA. Davor Business &amp; IT an der IU, Abschluss im Juni mit 1,9. Zehn Monate Produktentwicklung bei der Telekom, Werkstudent in der Kundenberatung im Vodafone-Projekt.</span>
-      <span class="en">Certified since October for end-to-end processes in SAP S/4HANA. Before that, Business &amp; IT at IU, graduated in June with a 1.9. Ten months of product development at Telekom, working student in customer advisory on the Vodafone project.</span>
+      <span class="de">Seit Oktober zertifiziert für End-to-End-Prozesse und Financial Accounting in SAP S/4HANA. Davor Business &amp; IT an der IU, Abschluss im Juni mit 1,9. Zehn Monate Produktentwicklung bei der Telekom, Werkstudent in der Kundenberatung im Vodafone-Projekt.</span>
+      <span class="en">Certified since October for end-to-end processes and financial accounting in SAP S/4HANA. Before that, Business &amp; IT at IU, graduated in June with a 1.9. Ten months of product development at Telekom, working student in customer advisory on the Vodafone project.</span>
     </p>
     <p class="hint">
       <span class="de">Unten im Dock: <kbd>E</kbd> für Ausbildung, <kbd>W</kbd> für Werdegang.<span class="hide-m"> Rechts ein Projekt, das ich geplant und gebaut habe.</span></span>
@@ -527,6 +560,21 @@ html[data-lang="en"] .de{display:none!important}
     <div class="panes"><div class="track" id="track">
 
       <div class="pane" role="tabpanel">
+        <div class="entry">
+          <div>
+            <h3><span class="de">SAP O2C Assistent</span><span class="en">SAP O2C assistant</span></h3>
+            <p class="meta"><span class="de"><b>Eigenes Projekt</b>, 10/2026<br>Python, SAP S/4HANA Cloud API</span><span class="en"><b>Own project</b>, 10/2026<br>Python, SAP S/4HANA Cloud API</span></p>
+          </div>
+          <div>
+            <p><span class="de">Chat und KPI-Dashboard für Order-to-Cash in SAP S/4HANA. Man fragt auf Deutsch oder Englisch, zum Beispiel "Welche Aufträge sind geliefert, aber nicht fakturiert?". Die Antwort kommt aus echten SAP-Sandbox-Daten und nennt die Belege dahinter.</span><span class="en">Chat and KPI dashboard for order-to-cash in SAP S/4HANA. You ask in German or English, for example "Which orders are delivered but not billed yet?". The answer comes from real SAP sandbox data and names the documents behind it.</span></p>
+            <div class="stats">
+              <div><strong><span class="de">14 von 15</span><span class="en">14 of 15</span></strong><span><span class="de">Testfragen bestanden</span><span class="en">test questions passed</span></span></div>
+              <div><strong>86</strong><span><span class="de">automatische Tests</span><span class="en">automated tests</span></span></div>
+              <div><strong>0</strong><span><span class="de">Schreibzugriffe auf SAP</span><span class="en">write calls to SAP</span></span></div>
+            </div>
+          </div>
+          <div class="span2 golinks"><button class="go" type="button" data-doc="o2c"><span class="de">Case Study lesen</span><span class="en">Read the case study</span></button><a class="go" href="https://github.com/abdallahaneed/sap-o2c-assistant" target="_blank" rel="noopener noreferrer"><span class="de">Code auf GitHub</span><span class="en">Code on GitHub</span></a></div>
+        </div>
         <div class="entry">
           <div>
             <h3><span class="de">Digitalisierung Coffee-Bike</span><span class="en">Coffee-Bike digitalisation</span></h3>
@@ -628,6 +676,17 @@ html[data-lang="en"] .de{display:none!important}
       <div class="pane" role="tabpanel">
         <div class="entry">
           <div>
+            <h3>SAP Financial Accoun&shy;ting</h3>
+            <p class="meta"><b>SAP</b>, 10/2026<br><span class="de">Prüfung C_TS4FI_2601</span><span class="en">Exam C_TS4FI_2601</span></p>
+          </div>
+          <div>
+            <p><span class="de">SAP S/4HANA Cloud Private Edition, Financial Accounting. Finanzbuchhaltung (FI) für Cloud Private Edition und On-Premise, Einstiegszertifikat für FI-Berater in Projekten.</span><span class="en">SAP S/4HANA Cloud Private Edition, Financial Accounting. Financial accounting (FI) for Cloud Private Edition and on-premise, entry-level certificate for FI consultants on projects.</span></p>
+            <p class="chips"><span>FI</span><span>S/4HANA</span></p>
+            <a class="go" href="https://www.credly.com/badges/21fbdaa2-a1d7-472e-82e6-ee03f655d5c4" target="_blank" rel="noopener noreferrer"><span class="de">Nachweis auf Credly</span><span class="en">Verify on Credly</span></a>
+          </div>
+        </div>
+        <div class="entry">
+          <div>
             <h3>SAP Certified Implemen&shy;tation Consultant</h3>
             <p class="meta"><b>SAP</b>, 10/2026<br><span class="de">Prüfung C_IEE2E</span><span class="en">Exam C_IEE2E</span></p>
           </div>
@@ -703,6 +762,130 @@ html[data-lang="en"] .de{display:none!important}
       <span class="ttl" id="doc-ttl"></span>
     </div>
     <div class="doc-body" id="doc-body">
+
+<!-- ============ SAP O2C ============ -->
+<article class="docpage" data-doc="o2c" data-de="Case Study: SAP O2C" data-en="Case study: SAP O2C" hidden>
+  <button class="back" type="button" data-backwork><span class="de">&lsaquo; Projekte</span><span class="en">&lsaquo; Projects</span></button>
+  <header class="d-hero">
+    <p class="d-k"><span class="de">Case Study, eigenes Projekt</span><span class="en">Case study, own project</span></p>
+    <h2><span class="de">SAP O2C Assistent</span><span class="en">SAP O2C assistant</span></h2>
+    <p class="d-lede"><span class="de">Im Vertriebsinnendienst kosten einfache Statusfragen Zeit. Wo steht Auftrag 48? Was ist für diesen Kunden noch offen? Welche Lieferungen sind raus, haben aber noch keine Rechnung? In SAP verteilt sich die Antwort auf VA03, VL03N, VF03 und den Belegfluss. Jede Frage heißt mehrere Bildschirme.</span><span class="en">In a sales back office, simple status questions eat time. Where is order 48? What is still open for this customer? Which deliveries left the warehouse but have no invoice yet? In SAP the answer is spread over VA03, VL03N, VF03 and the document flow. Every question means several screens.</span></p>
+    <dl class="d-meta">
+      <div><dt><span class="de">Rolle</span><span class="en">Role</span></dt><dd><span class="de">Konzept, Entwicklung, Tests</span><span class="en">Concept, development, testing</span></dd></div>
+      <div><dt><span class="de">Daten</span><span class="en">Data</span></dt><dd><span class="de">SAP S/4HANA Cloud Sandbox, OData API, nur lesen</span><span class="en">SAP S/4HANA Cloud sandbox, OData API, read only</span></dd></div>
+      <div><dt><span class="de">Umfang</span><span class="en">Scope</span></dt><dd><span class="de">7 Meilensteine, 4 SAP-APIs, 86 Tests</span><span class="en">7 milestones, 4 SAP APIs, 86 tests</span></dd></div>
+    </dl>
+  </header>
+
+  <section class="d-sec">
+    <h3><span class="de">Vom Beleg zur Antwort</span><span class="en">From document to answer</span></h3>
+    <div>
+      <div class="o2c" role="img" aria-label="SAP documents are synced read only into a database. A question goes to one of seven fixed functions. The answer names the documents. Write requests are refused.">
+        <div class="lk">SAP</div>
+        <div class="row">
+          <div class="n"><span class="de">Kundenauftrag</span><span class="en">Sales order</span><small>VA03</small></div><i class="ar"></i>
+          <div class="n"><span class="de">Lieferung</span><span class="en">Delivery</span><small>VL03N</small></div><i class="ar"></i>
+          <div class="n"><span class="de">Faktura</span><span class="en">Billing document</span><small>VF03</small></div>
+        </div>
+        <p class="sub"><span class="de">Verknüpft auf Positionsebene, wie im SAP-Belegfluss.</span><span class="en">Linked on item level, like the SAP document flow.</span></p>
+        <div class="dn"><span class="de">Sync-Job über die OData-APIs, nur lesen</span><span class="en">Sync job through the OData APIs, read only</span></div>
+        <div class="lk"><span class="de">Daten</span><span class="en">Data</span></div>
+        <div class="row">
+          <div class="n">SQLite<small><span class="de">4 Tabellen, View document_flow</span><span class="en">4 tables, document_flow view</span></small></div><span class="gap"></span>
+          <div class="n soft"><span class="de">Eigene O2C-Notizen</span><span class="en">Own O2C notes</span><small><span class="de">8 Seiten, durchsuchbar</span><span class="en">8 pages, searchable</span></small></div>
+        </div>
+        <div class="dn"><span class="de">Nur über feste, getestete Funktionen</span><span class="en">Only through fixed, tested functions</span></div>
+        <div class="lk"><span class="de">Frage</span><span class="en">Question</span></div>
+        <div class="row">
+          <div class="n"><span class="de">Frage auf DE oder EN</span><span class="en">Question in DE or EN</span><small><span class="de">Sprache erkennt der Code</span><span class="en">Code detects the language</span></small></div><i class="ar"></i>
+          <div class="n q"><span class="de">Modell wählt 1 von 7 Funktionen</span><span class="en">Model picks 1 of 7 functions</span><small><span class="de">kein freies SQL</span><span class="en">no free SQL</span></small></div><i class="ar"></i>
+          <div class="n a"><span class="de">Antwort mit Belegnummern</span><span class="en">Answer with document numbers</span><small><span class="de">und O2C-Schritt</span><span class="en">and the O2C step</span></small></div>
+        </div>
+        <div class="sep"></div>
+        <div class="lk"><span class="de">Schutz</span><span class="en">Guard</span></div>
+        <div class="row">
+          <div class="n"><span class="de">"Storniere Faktura 90000000"</span><span class="en">"Cancel invoice 90000000"</span></div><i class="ar x"></i>
+          <div class="n x"><span class="de">Abgelehnt, nur lesen</span><span class="en">Refused, read only</span></div>
+        </div>
+      </div>
+      <p class="d-note"><span class="de">Lokal und kostenlos: Sprachmodell über Ollama, Beispieldaten statt API, wenn kein Schlüssel da ist.</span><span class="en">Local and free: language model through Ollama, sample data instead of the API when there is no key.</span></p>
+    </div>
+  </section>
+
+  <section class="d-sec">
+    <h3><span class="de">Eine echte Antwort</span><span class="en">A real answer</span></h3>
+    <div>
+      <div class="qa">
+        <p class="who"><span class="de">Frage</span><span class="en">Question</span></p>
+        <p><b>Welche Aufträge sind geliefert, aber nicht fakturiert?</b></p>
+        <p class="who"><span class="de">Antwort, gekürzt</span><span class="en">Answer, shortened</span></p>
+        <p>Es gibt 3 Lieferungen, die geliefert aber nicht fakturiert sind, insgesamt mit einem Wert von 105,30 USD. Lieferung 80000001 (Auftrag 3), 80000003 (Auftrag 4), 80000144 (Auftrag 354), alle für Domestic US Customer 1. Die Fälle liegen im Schritt Lieferung, die Fakturierung ist noch offen.</p>
+      </div>
+      <p class="d-note"><span class="de">Aus dem Testlauf, nicht nachbearbeitet. 25 Sekunden, ein Funktionsaufruf.</span><span class="en">From the evaluation run, unedited and in German as asked. 25 seconds, one function call.</span></p>
+    </div>
+  </section>
+
+  <section class="d-sec">
+    <h3><span class="de">Entscheidungen</span><span class="en">Decisions</span></h3>
+    <div>
+      <div class="ways">
+        <div><b><span class="de">Funktionen statt SQL</span><span class="en">Functions, not SQL</span></b><span class="de">Das Modell wählt nur eine von sieben Funktionen und übergibt Parameter. Eingaben wie 1' OR '1'='1 bleiben harmlos. Ein Test beweist das.</span><span class="en">The model only picks one of seven functions and passes parameters. An input like 1' OR '1'='1 stays harmless. A test proves it.</span></div>
+        <div><b><span class="de">Belegfluss auf Positionen</span><span class="en">Flow on item level</span></b><span class="de">Lieferung und Faktura tragen im Kopf keine Auftragsnummer. Die Verknüpfung sitzt auf den Positionen, wie in SAP.</span><span class="en">Delivery and billing headers carry no order number. The link sits on the items, like in SAP.</span></div>
+        <div><b><span class="de">Fakturastatus aus der Lieferung</span><span class="en">Billing status from the delivery</span></b><span class="de">Der Status im Auftragskopf deckt nur auftragsbezogene Faktura ab. Bei Ware steht er auf der Lieferung. Gefunden in den echten Daten.</span><span class="en">The order header status only covers order-related billing. For goods it sits on the delivery. Found in the real data.</span></div>
+        <div><b><span class="de">Umsatz nach Fakturaart</span><span class="en">Revenue by billing type</span></b><span class="de">F2 und L2 zählen positiv, G2 negativ. Anzahlungsanforderungen und Stornos zählen nicht.</span><span class="en">F2 and L2 count positive, G2 negative. Down payment requests and cancellations do not count.</span></div>
+        <div><b><span class="de">Ehrlich bei Lücken</span><span class="en">Honest about gaps</span></b><span class="de">Fehlt eine Rechnung in den geladenen Daten, sagt der Assistent das, statt eine Nummer zu erfinden.</span><span class="en">If an invoice is missing from the loaded data, the assistant says so instead of inventing a number.</span></div>
+        <div><b><span class="de">Geld nie als Float</span><span class="en">Money never as float</span></b><span class="de">Beträge als Dezimalzahl. 0,1 plus 0,2 bleibt 0,3.</span><span class="en">Amounts as decimals. 0.1 plus 0.2 stays 0.3.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="d-sec">
+    <h3><span class="de">Bewertung</span><span class="en">Evaluation</span></h3>
+    <div>
+      <div class="stats big">
+        <div><strong><span class="de">14 von 15</span><span class="en">14 of 15</span></strong><span><span class="de">Fragen bestanden</span><span class="en">questions passed</span></span></div>
+        <div><strong>18 s</strong><span><span class="de">pro Antwort im Schnitt</span><span class="en">per answer on average</span></span></div>
+        <div><strong>86</strong><span><span class="de">Tests ohne Netz und Schlüssel</span><span class="en">tests without network or keys</span></span></div>
+      </div>
+      <p><span class="de">15 Fragen auf Deutsch und Englisch. Die erwarteten Werte rechnet SQL direkt auf der Datenbank, nicht der Assistent. Die Prüfung ist reines Python: richtige Funktion, Belegnummern, Zahlen, Antwortsprache. Kein Modell bewertet ein anderes.</span><span class="en">15 questions in German and English. The expected values come from SQL on the database, not from the assistant. The checks are plain Python: right function, document numbers, figures, answer language. No model grades another.</span></p>
+      <ul class="d-list">
+        <li><span class="de">Erster Lauf: 11 von 15</span><span class="en">First run: 11 of 15</span></li>
+        <li><span class="de">Ein Test war falsch. Er prüfte den Weg, nicht das Ergebnis. Jetzt prüft er das Ergebnis.</span><span class="en">One check was wrong. It tested the path, not the result. Now it tests the result.</span></li>
+        <li><span class="de">Antworten in falscher Sprache im Code gelöst, Prozessantworten aus Allgemeinwissen im Prompt gelöst</span><span class="en">Answers in the wrong language fixed in code, process answers from general knowledge fixed in the prompt</span></li>
+        <li><span class="de">Ein Fehler bleibt: Englische Frage zu F2 und G2, richtige Antwort, aber auf Deutsch. Hier habe ich aufgehört zu tunen, damit die Zahl etwas bedeutet.</span><span class="en">One failure remains: an English question on F2 and G2, a correct answer, but in German. I stopped tuning there so the score keeps meaning something.</span></li>
+      </ul>
+      <p class="d-note"><span class="de">Lokales Modell qwen3:4b-instruct auf einem MacBook Air M1 mit 8 GB.</span><span class="en">Local model qwen3:4b-instruct on a MacBook Air M1 with 8 GB.</span></p>
+    </div>
+  </section>
+
+  <section class="d-sec">
+    <h3><span class="de">Grenzen</span><span class="en">Limits</span></h3>
+    <div>
+      <ul class="d-list">
+        <li><span class="de">Demo-Daten aus der SAP-Sandbox, höchstens 1000 Zeilen pro Tabelle. 12 Prozent der Fakturapositionen zeigen auf Aufträge außerhalb davon.</span><span class="en">Demo data from the SAP sandbox, at most 1000 rows per table. 12 percent of billing items point to orders outside that.</span></li>
+        <li><span class="de">Fast der ganze Sandbox-Umsatz liegt im Oktober 2016. Das Dashboard zeigt das so, wie es ist.</span><span class="en">Almost all sandbox revenue sits in October 2016. The dashboard shows it as it is.</span></li>
+        <li><span class="de">Das kleine lokale Modell ist langsam und macht kleine Fehler.</span><span class="en">The small local model is slow and makes small mistakes.</span></li>
+        <li><span class="de">Kein Login, kein Schreibzugriff auf SAP. Beides bewusst für diesen Umfang.</span><span class="en">No login, no write access to SAP. Both on purpose for this scope.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="d-sec">
+    <h3><span class="de">Technik</span><span class="en">Tech</span></h3>
+    <div>
+      <p class="chips"><span>Python 3.12</span><span>OData V2</span><span>SQLite</span><span>SQLAlchemy</span><span>FastAPI</span><span>Streamlit</span><span>ChromaDB</span><span>Ollama</span><span>pytest</span><span>Docker</span><span>GitHub Actions</span></p>
+    </div>
+  </section>
+
+  <section class="d-sec">
+    <h3><span class="de">Als Nächstes</span><span class="en">Next</span></h3>
+    <div>
+      <p><span class="de">Die 15 Fragen auf größeren Modellen messen: Genauigkeit, Tempo, Kosten pro Antwort. Mehr Fragen, die mehrere Funktionen verbinden. Sync nur für geänderte Belege statt komplett neu laden.</span><span class="en">Run the 15 questions on larger models: accuracy, speed, cost per answer. More questions that combine several functions. Sync only changed documents instead of a full reload.</span></p>
+      <a class="go" href="https://github.com/abdallahaneed/sap-o2c-assistant" target="_blank" rel="noopener noreferrer"><span class="de">Code und Setup auf GitHub</span><span class="en">Code and setup on GitHub</span></a>
+    </div>
+  </section>
+  <nav class="d-next"><button type="button" data-doc="coffee"><span class="de">Nächste Case Study</span><span class="en">Next case study</span><b><span class="de">Digitalisierung Coffee-Bike</span><span class="en">Coffee-Bike digitalisation</span></b></button></nav>
+</article>
 
 <!-- ============ COFFEE-BIKE ============ -->
 <article class="docpage" data-doc="coffee" data-de="Case Study: Coffee-Bike" data-en="Case study: Coffee-Bike" hidden>
@@ -969,7 +1152,7 @@ html[data-lang="en"] .de{display:none!important}
       </ul>
     </div>
   </section>
-  <nav class="d-next"><button type="button" data-doc="coffee"><span class="de">Nächste Case Study</span><span class="en">Next case study</span><b><span class="de">Digitalisierung Coffee-Bike</span><span class="en">Coffee-Bike digitalisation</span></b></button></nav>
+  <nav class="d-next"><button type="button" data-doc="o2c"><span class="de">Nächste Case Study</span><span class="en">Next case study</span><b><span class="de">SAP O2C Assistent</span><span class="en">SAP O2C assistant</span></b></button></nav>
 </article>
 
 <!-- ============ ABOUT ============ -->
@@ -1018,6 +1201,10 @@ html[data-lang="en"] .de{display:none!important}
   <section class="d-sec">
     <h3><span class="de">SAP-Zertifizierung &amp; Weiterbildung</span><span class="en">SAP certification &amp; training</span></h3>
     <div class="cv-items">
+      <div class="cv-i">
+        <p class="cv-t"><b>SAP Certified: SAP S/4HANA Cloud Private Edition, Financial Accounting</b>, SAP<span class="cv-d">10/2026</span></p>
+        <ul class="d-list"><li><span class="de">Prüfung C_TS4FI_2601. Finanzbuchhaltung (FI) in SAP S/4HANA</span><span class="en">Exam C_TS4FI_2601. Financial accounting (FI) in SAP S/4HANA</span></li></ul>
+      </div>
       <div class="cv-i">
         <p class="cv-t"><b>SAP Certified: Implementation Consultant, End-to-End Business Processes in SAP</b>, SAP<span class="cv-d">10/2026</span></p>
         <ul class="d-list"><li><span class="de">Prüfung C_IEE2E. Prozesse und Integration in FI, CO, MM, SD und PP</span><span class="en">Exam C_IEE2E. Processes and integration in FI, CO, MM, SD and PP</span></li></ul>
@@ -1271,7 +1458,8 @@ function openApp(id){
 }
 /* education: spring stack */
 var edu=[
-  {yr:"2026",now:true,sub:{de:"10/2026",en:"10/2026"},t:{de:"SAP Certified Implementation Consultant",en:"SAP Certified Implementation Consultant"},o:{de:"SAP, Prüfung C_IEE2E",en:"SAP, exam C_IEE2E"},n:{de:"End-to-End-Prozesse in <b>FI, CO, MM, SD und PP</b>.",en:"End-to-end processes in <b>FI, CO, MM, SD and PP</b>."}},
+  {yr:"2026",now:true,sub:{de:"10/2026",en:"10/2026"},t:{de:"SAP Financial Accounting",en:"SAP Financial Accounting"},o:{de:"SAP, Prüfung C_TS4FI_2601",en:"SAP, exam C_TS4FI_2601"},n:{de:"Finanzbuchhaltung <b>FI</b> in S/4HANA Cloud Private Edition.",en:"Financial accounting <b>FI</b> in S/4HANA Cloud Private Edition."}},
+  {yr:"2026",sub:{de:"10/2026",en:"10/2026"},t:{de:"SAP Certified Implementation Consultant",en:"SAP Certified Implementation Consultant"},o:{de:"SAP, Prüfung C_IEE2E",en:"SAP, exam C_IEE2E"},n:{de:"End-to-End-Prozesse in <b>FI, CO, MM, SD und PP</b>.",en:"End-to-end processes in <b>FI, CO, MM, SD and PP</b>."}},
   {yr:"2026",sub:{de:"Foundation Level",en:"Foundation Level"},t:{de:"SAP S/4HANA 2023 Grundlagen",en:"SAP S/4HANA 2023 basics"},o:{de:"SAP, Prüfung UC_FL_S42023",en:"SAP, exam UC_FL_S42023"},n:{de:"Grundlagen der Systemanwendung.",en:"System basics."}},
   {yr:"2026",sub:{de:"08/2026 bis 10/2026",en:"08/2026 to 10/2026"},t:{de:"Weiterbildung SAP-Berater",en:"SAP consultant training"},o:{de:"Berger Institut",en:"Berger Institut"},n:{de:"FI, CO, MM, SD, PP und Fiori. <b>Procure-to-Pay, Order-to-Cash, Plan-to-Produce</b>.",en:"FI, CO, MM, SD, PP and Fiori. <b>Procure-to-Pay, Order-to-Cash, Plan-to-Produce</b>."}},
   {yr:"2026",sub:{de:"10/2023 bis 06/2026",en:"10/2023 to 06/2026"},t:{de:"B.Sc. Business &amp; IT",en:"B.Sc. Business &amp; IT"},o:{de:"IU Internationale Hochschule, Bad Honnef",en:"IU Internationale Hochschule, Bad Honnef"},n:{de:"Abschlussnote <b>1,9</b>.",en:"Final grade <b>1.9</b>."}},
